@@ -1,0 +1,60 @@
+{
+  "nombre": "Oferta Pizza artesanal",
+  "marca": "sabor-y-tradicion",
+  "plantilla": "oferta",
+  "datos": {
+    "gancho": "¡Martes de pizza!",
+    "producto": "Pizza artesanal",
+    "foto": "marca:fotos/menu-2.jpg",
+    "antes": "$32.000",
+    "ahora": "$24.000",
+    "urgencia": "Solo este martes.",
+    "cta": "Escríbenos por WhatsApp y pídela."
+  },
+  "formato": "9:16",
+  "guion": {
+    "texto": "¡Martes de pizza! Pizza artesanal: antes $32.000, ahora solo $24.000. ¡Te ahorras el 25%! Solo este martes. Escríbenos por WhatsApp y pídela."
+  },
+  "escenas": [
+    {
+      "tipo": "texto",
+      "hasta": "@Pizza artesanal",
+      "params": {
+        "lineas": [
+          "¡MARTES DE",
+          "PIZZA!"
+        ],
+        "fondo": "marca:fotos/menu-2.jpg",
+        "resaltar": [
+          "PIZZA"
+        ]
+      }
+    },
+    {
+      "tipo": "oferta",
+      "hasta": "@Escríbenos por",
+      "params": {
+        "foto": "marca:fotos/menu-2.jpg",
+        "producto": "Pizza artesanal",
+        "antes": "$32.000",
+        "ahora": "$24.000",
+        "descuento": "-25%",
+        "urgencia": "Solo este martes"
+      }
+    },
+    {
+      "tipo": "cierre",
+      "hasta": "fin_voz",
+      "extra": 1,
+      "params": {}
+    }
+  ],
+  "capas": {
+    "subtitulos": true,
+    "logo": true
+  },
+  "audio": {
+    "musica": "sintetica",
+    "sfx_cortes": true
+  }
+}

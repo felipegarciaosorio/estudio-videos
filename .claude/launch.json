@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "estudio-videos",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["app:app", "--host", "127.0.0.1", "--port", "8765"],
+      "port": 8765,
+      "autoPort": false
+    }
+  ]
+}

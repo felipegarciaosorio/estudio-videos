@@ -1,0 +1,90 @@
+{
+  "nombre": "Reseñas Refugio del Viento",
+  "marca": "refugio-del-viento",
+  "plantilla": "resenas",
+  "datos": {
+    "gancho": "¿Buscas una noche diferente en la montaña?",
+    "foto": "marca:fotos/cover_56bb328d-1c95-4579-84b8-2fd51ed71ccb.jpg",
+    "resenas": [
+      {
+        "nombre": "Laura",
+        "texto": "La vista de noche es increíble y el jacuzzi, perfecto.",
+        "estrellas": 5
+      },
+      {
+        "nombre": "Andrés",
+        "texto": "Celebramos nuestro aniversario y todo fue mágico.",
+        "estrellas": 5
+      },
+      {
+        "nombre": "Camila",
+        "texto": "Atención excelente, volveremos pronto.",
+        "estrellas": 5
+      }
+    ],
+    "cta": "Reserva tu noche por WhatsApp."
+  },
+  "formato": "9:16",
+  "guion": {
+    "texto": "¿Buscas una noche diferente en la montaña? Esto dicen nuestros clientes. Laura: La vista de noche es increíble y el jacuzzi, perfecto. Andrés: Celebramos nuestro aniversario y todo fue mágico. Camila: Atención excelente, volveremos pronto. Reserva tu noche por WhatsApp."
+  },
+  "escenas": [
+    {
+      "tipo": "texto",
+      "hasta": "@Esto dicen",
+      "params": {
+        "lineas": [
+          "¿BUSCAS UNA",
+          "NOCHE",
+          "DIFERENTE EN",
+          "LA MONTAÑA?"
+        ],
+        "fondo": "marca:fotos/cover_56bb328d-1c95-4579-84b8-2fd51ed71ccb.jpg"
+      }
+    },
+    {
+      "tipo": "resenas",
+      "hasta": "@Reserva tu",
+      "params": {
+        "resenas": [
+          {
+            "nombre": "Laura",
+            "texto": "La vista de noche es increíble y el jacuzzi, perfecto.",
+            "estrellas": 5
+          },
+          {
+            "nombre": "Andrés",
+            "texto": "Celebramos nuestro aniversario y todo fue mágico.",
+            "estrellas": 5
+          },
+          {
+            "nombre": "Camila",
+            "texto": "Atención excelente, volveremos pronto.",
+            "estrellas": 5
+          }
+        ],
+        "fondo": "marca:fotos/cover_56bb328d-1c95-4579-84b8-2fd51ed71ccb.jpg",
+        "titulo": "Lo que dicen nuestros clientes",
+        "tiempos": [
+          0.1,
+          "@Andrés",
+          "@Camila"
+        ]
+      }
+    },
+    {
+      "tipo": "cierre",
+      "hasta": "fin_voz",
+      "extra": 1.0,
+      "params": {}
+    }
+  ],
+  "capas": {
+    "subtitulos": true,
+    "logo": true
+  },
+  "audio": {
+    "musica": "sintetica",
+    "sfx_cortes": true
+  }
+}

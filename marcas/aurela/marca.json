@@ -1,0 +1,12 @@
+{
+  "nombre": "Aurela",
+  "logo": "logo.png",
+  "logo_con_nombre": true,
+  "colores": {"primario": "#0F8F72", "oscuro": "#0B3D33", "tinta": "#10231F", "acento": "#6FD3A8", "texto": "#FFFFFF"},
+  "fuente_subtitulos": "din",
+  "fuente_titulos": "avenir",
+  "voz": {"voz": "es-CO-GonzaloNeural", "velocidad": "+12%"},
+  "cierre": {"subtitulo": "IDENTIDAD DIGITAL", "url": "aurelasoluciones.com", "whatsapp": "WhatsApp +57 320 706 9250"},
+  "tarjeta": "tarjeta.png",
+  "fotos": ["fotos/tarjeta-mesa.png", "fotos/duenio.png"]
+}

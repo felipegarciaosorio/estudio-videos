@@ -1,0 +1,11 @@
+{
+  "nombre": "Refugio del Viento",
+  "logo": "logo.png",
+  "logo_con_nombre": false,
+  "colores": {"primario": "#B8902F", "oscuro": "#1B2735", "tinta": "#0E141C", "acento": "#D9B65C", "texto": "#FFFFFF"},
+  "fuente_subtitulos": "din",
+  "fuente_titulos": "didot",
+  "voz": {"voz": "es-CO-SalomeNeural", "velocidad": "+8%"},
+  "cierre": {"subtitulo": "CABAÑA PRIVADA · RISARALDA, CALDAS", "url": "aurelasoluciones.com/p/refugio-del-viento", "whatsapp": "WhatsApp 314 721 8736", "mostrar_nombre": false},
+  "tarjeta": "tarjeta.png"
+}

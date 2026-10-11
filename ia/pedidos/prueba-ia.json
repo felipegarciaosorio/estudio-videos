@@ -1,0 +1,55 @@
+{
+  "pid": "prueba-ia",
+  "nombre": "Prueba IA Sabor & Tradición",
+  "marca": "sabor-y-tradicion",
+  "via": "claude",
+  "creado": "2026-10-11 09:20",
+  "proyecto": "/Users/pipe/Documents/Codex/estudio-videos/proyectos/prueba-ia",
+  "tareas": [
+    {
+      "id": "voz-03bd125fa4",
+      "tipo": "voz",
+      "escena": null,
+      "nombre": "Voz Marisol",
+      "modelo": "text2speech_v2",
+      "params": {
+        "variant": "elevenlabs",
+        "voice_type": "preset",
+        "voice_id": "75e72cd5-011b-4130-a474-e8b1ab341f04"
+      },
+      "prompt": "¿Antojo de algo rico hoy? En Sabor y Tradición te tenemos: Plato de la casa, a treinta y cuatro mil pesos. Bowl del huerto, a veintiséis mil pesos. Pizza artesanal, a treinta y dos mil pesos. Pide ya por WhatsApp.",
+      "referencias": [],
+      "destino": "ia/voz-03bd125fa4.mp3",
+      "costo": 0.75,
+      "listo": false,
+      "estado": "pendiente"
+    },
+    {
+      "id": "clip-0a91a2a12e",
+      "tipo": "video",
+      "escena": 1,
+      "nombre": "Kling 3.0 Pro",
+      "catalogo": "kling_pro",
+      "modelo": "kling3_0",
+      "params": {
+        "mode": "pro",
+        "sound": "off",
+        "duration": 5,
+        "aspect_ratio": "9:16"
+      },
+      "prompt": "Slow push-in on a grilled steak plate with fresh salad on a rustic wooden table, gentle steam rising, warm restaurant light, shallow depth of field",
+      "referencias": [
+        {
+          "ruta": "/Users/pipe/Documents/Codex/estudio-videos/marcas/sabor-y-tradicion/fotos/hero-food.jpg",
+          "rol": "start_image"
+        }
+      ],
+      "depende": null,
+      "destino": "ia/clip-0a91a2a12e.mp4",
+      "costo": 8.75,
+      "listo": false,
+      "estado": "pendiente"
+    }
+  ],
+  "costo": 9.5
+}

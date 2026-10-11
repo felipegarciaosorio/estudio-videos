@@ -1,0 +1,12 @@
+{
+  "nombre": "Sabor & Tradición",
+  "logo": "logo.png",
+  "logo_con_nombre": true,
+  "colores": {"primario": "#B5502E", "oscuro": "#4A1F14", "tinta": "#1E120C", "acento": "#D6AA60", "texto": "#FFFFFF"},
+  "fuente_subtitulos": "din",
+  "fuente_titulos": "didot",
+  "voz": {"voz": "es-CO-GonzaloNeural", "velocidad": "+12%"},
+  "cierre": {"subtitulo": "COCINA DE AUTOR", "url": "Calle 10 # 5-20, Centro", "whatsapp": "Pide por WhatsApp"},
+  "tarjeta": "tarjeta.png",
+  "fotos": ["fotos/hero-food.jpg", "fotos/menu-1.jpg", "fotos/menu-2.jpg", "fotos/mesa.png"]
+}

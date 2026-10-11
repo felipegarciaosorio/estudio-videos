@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estudio de video</title>
+  <link rel="stylesheet" href="/panel/estilos.css" />
+</head>
+<body>
+  <header class="barra">
+    <div class="marca-app"><span class="punto"></span> Estudio de video</div>
+    <nav>
+      <button data-vista="videos" class="activo">Videos</button>
+      <button data-vista="asistente">Asistente</button>
+      <button data-vista="pedidos">Pedidos IA <span id="cuenta-pedidos" class="globo" hidden></span></button>
+      <button data-vista="marcas">Marcas</button>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+
+  <template id="t-videos">
+    <section class="vista">
+      <div class="encabezado">
+        <div>
+          <h1>Videos</h1>
+          <p class="sutil">Videos para redes de cualquier negocio. Gratis en tu Mac, o con IA de Higgsfield cuando lo necesites.</p>
+        </div>
+        <div class="botones">
+          <button class="secundario" data-ir="asistente">✦ Desde una idea</button>
+          <button class="primario" id="btn-nuevo">+ Nuevo video</button>
+        </div>
+      </div>
+      <div id="lista-videos" class="rejilla"></div>
+    </section>
+  </template>
+
+  <template id="t-nuevo">
+    <section class="vista estrecha">
+      <a href="#" class="volver" data-ir="videos">← Videos</a>
+      <h1>Nuevo video</h1>
+      <h3>1. Marca</h3>
+      <div id="elegir-marca" class="chips"></div>
+      <h3>2. Tipo de video</h3>
+      <div id="elegir-plantilla" class="tarjetas-plantilla"></div>
+      <h3>3. Formato</h3>
+      <div class="chips" id="elegir-formato">
+        <button class="chip activo" data-f="9:16">Vertical 9:16 · Reels/TikTok</button>
+        <button class="chip" data-f="1:1">Cuadrado 1:1 · Feed</button>
+        <button class="chip" data-f="16:9">Horizontal 16:9 · YouTube</button>
+      </div>
+      <h3>4. Motor</h3>
+      <div class="chips" id="elegir-motor-nuevo">
+        <button class="chip activo" data-m="gratis">Gratis · voz y edición locales</button>
+        <button class="chip" data-m="higgsfield">Higgsfield · voz premium y clips IA</button>
+      </div>
+      <h3>5. Contenido</h3>
+      <div id="form-plantilla" class="formulario"></div>
+      <div class="fila-guion">
+        <label>Guion (lo que dice la voz)</label>
+        <button class="secundario" id="btn-sugerir">Sugerir guion</button>
+      </div>
+      <textarea id="guion-nuevo" rows="5" placeholder="Pulsa «Sugerir guion» o escríbelo tú."></textarea>
+      <p class="sutil">Los precios ($26.000) y porcentajes (25%) se leen solos en palabras.</p>
+      <div class="acciones"><button class="primario" id="btn-crear">Crear y abrir el editor</button></div>
+    </section>
+  </template>
+
+  <template id="t-editor">
+    <section class="vista editor">
+      <a href="#" class="volver" data-ir="videos">← Videos</a>
+      <div class="encabezado">
+        <input id="nombre-proyecto" class="titulo-editable" />
+        <div class="botones">
+          <button class="secundario" id="btn-duplicar">Duplicar</button>
+          <button class="secundario" id="btn-guardar">Guardar</button>
+          <button class="primario" id="btn-generar">Generar video</button>
+        </div>
+      </div>
+      <div class="columnas">
+        <div class="col">
+          <div class="panel" id="panel-motor">
+            <h3>Motor</h3>
+            <div class="chips" id="elegir-motor">
+              <button class="chip" data-m="gratis">Gratis</button>
+              <button class="chip" data-m="higgsfield">Higgsfield (IA)</button>
+            </div>
+            <p class="sutil" id="motor-nota"></p>
+            <div id="motor-ia" hidden>
+              <label class="check"><input type="checkbox" id="ia-voz" /> Voz premium (ElevenLabs)</label>
+              <div id="ia-voz-opts">
+                <label>Voz IA<select id="ia-voz-id"></select></label>
+                <div class="dos">
+                  <label>Velocidad<select id="ia-tempo">
+                    <option value="1">Normal</option><option value="1.05">+5%</option><option value="1.1">+10%</option><option value="1.15">+15%</option><option value="1.2">+20%</option>
+                  </select></label>
+                  <label>&nbsp;<button class="secundario" id="btn-muestra-ia" type="button">▶ Muestra</button></label>
+                </div>
+                <audio id="audio-ia" controls hidden></audio>
+                <p class="sutil">Las muestras están en inglés; la voz habla tu guion en español.</p>
+              </div>
+              <label>Quién genera las piezas IA<select id="ia-via">
+                <option value="claude">Claude, con tus créditos del plan</option>
+                <option value="chatgpt">ChatGPT + Higgsfield (copiar y pegar)</option>
+                <option value="api">API directa (automática)</option>
+              </select></label>
+              <div id="ia-resumen"></div>
+              <div class="botones">
+                <button class="primario" id="btn-pedido" type="button">Enviar pedido IA</button>
+                <button class="secundario" id="btn-ia-refrescar" type="button" title="Guardar y recalcular">↻</button>
+              </div>
+              <div id="ia-chatgpt" hidden>
+                <h4>Para ChatGPT</h4>
+                <p class="sutil">1) Copia y pega en ChatGPT (con Higgsfield conectado). 2) Adjunta estas fotos. 3) Descarga cada resultado y súbelo con «Subir resultado».</p>
+                <div id="ia-chatgpt-fotos" class="miniaturas"></div>
+                <textarea id="ia-chatgpt-texto" rows="8" readonly></textarea>
+                <button class="secundario" id="btn-copiar-chatgpt" type="button">Copiar instrucciones</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Guion</h3>
+            <textarea id="guion" rows="8"></textarea>
+            <div class="dos">
+              <label><span id="etq-voz">Voz</span><select id="voz"></select></label>
+              <label>Velocidad<select id="velocidad">
+                <option>+0%</option><option>+5%</option><option>+8%</option><option selected>+12%</option><option>+18%</option><option>+25%</option>
+              </select></label>
+            </div>
+            <button class="secundario" id="btn-probar-voz">▶ Probar voz</button>
+            <audio id="audio-prueba" controls hidden></audio>
+          </div>
+          <div class="panel">
+            <h3>Capas y sonido</h3>
+            <label class="check"><input type="checkbox" id="cap-subtitulos" /> Subtítulos karaoke</label>
+            <label class="check"><input type="checkbox" id="cap-logo" /> Logo arriba</label>
+            <label>Formato<select id="formato"><option>9:16</option><option>1:1</option><option>16:9</option></select></label>
+            <label>Música<select id="musica"></select></label>
+            <details>
+              <summary>Etiqueta grande de precio</summary>
+              <label>Aparece cuando la voz dice<input id="et-desde" placeholder="$99.900" /></label>
+              <div class="dos">
+                <label>Texto grande<input id="et-grande" placeholder="$99.900" /></label>
+                <label>Texto pequeño<input id="et-pequeno" placeholder="PAGO ÚNICO" /></label>
+              </div>
+            </details>
+          </div>
+        </div>
+        <div class="col ancha">
+          <div class="panel">
+            <div class="encabezado-mini"><h3>Escenas</h3><button class="secundario" id="btn-agregar">+ Escena</button></div>
+            <p class="sutil">Cada escena dura hasta que la voz dice la frase indicada, o los segundos que pongas.</p>
+            <p class="sutil nota-asistente" id="notas-asistente" hidden></p>
+            <div id="escenas"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="panel resultado">
+            <h3>Resultado</h3>
+            <div id="progreso" class="progreso" hidden><div class="barra-p"><span></span></div><p class="sutil" id="progreso-txt"></p></div>
+            <div id="error" class="error" hidden></div>
+            <video id="video" controls playsinline hidden></video>
+            <a id="descargar" class="primario boton" hidden download>Descargar MP4</a>
+            <div class="archivos">
+              <h4>Archivos del proyecto</h4>
+              <input type="file" id="subir-proyecto" accept="image/*,video/*" />
+              <div id="lista-archivos" class="miniaturas"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <template id="t-asistente">
+    <section class="vista estrecha">
+      <h1>Asistente: de una idea a un video</h1>
+      <p class="sutil">Escribe la idea en una frase. Claude o ChatGPT arman el guion, las escenas y los prompts ya ajustados a nuestro sistema, para no gastar créditos en pruebas.</p>
+      <div class="panel">
+        <label>La idea<textarea id="as-idea" rows="3" placeholder="Ej.: Promo de almuerzo ejecutivo de lunes a viernes a $18.000 con sopa, seco y jugo. Público: oficinistas del centro."></textarea></label>
+        <h4>Marca</h4>
+        <div id="as-marca" class="chips"></div>
+        <div class="tres">
+          <label>Formato<select id="as-formato"><option>9:16</option><option>1:1</option><option>16:9</option></select></label>
+          <label>Duración (s)<input id="as-duracion" type="number" value="20" min="8" max="60" /></label>
+          <label>Motor<select id="as-motor"><option value="gratis">Gratis</option><option value="higgsfield">Higgsfield (IA)</option></select></label>
+        </div>
+        <label id="as-presupuesto-l" hidden>Presupuesto máximo (créditos)<input id="as-presupuesto" type="number" value="15" min="1" /></label>
+        <div class="botones">
+          <button class="primario" id="as-chatgpt">Copiar para ChatGPT</button>
+          <button class="secundario" id="as-claude">Enviar a Claude</button>
+        </div>
+      </div>
+      <div class="panel" id="as-paso2" hidden>
+        <h3>Pega la respuesta de ChatGPT</h3>
+        <p class="sutil">El brief ya está copiado. Pégalo en ChatGPT y luego pega aquí su respuesta (el bloque JSON).</p>
+        <textarea id="as-respuesta" rows="10" class="json" placeholder="{ ... }"></textarea>
+        <div id="as-resultado"></div>
+        <div class="acciones"><button class="primario" id="as-crear">Crear proyecto</button></div>
+      </div>
+      <div class="panel">
+        <h3>Ideas enviadas a Claude</h3>
+        <p class="sutil">Dile a Claude: <code>procesa las ideas</code> <button class="icono" data-copiar="procesa las ideas" type="button">Copiar</button></p>
+        <div id="as-ideas"></div>
+      </div>
+      <details class="panel"><summary>Guía de prompts de nuestro sistema</summary><div id="as-guia" class="guia"></div></details>
+    </section>
+  </template>
+
+  <template id="t-pedidos">
+    <section class="vista estrecha">
+      <h1>Pedidos IA</h1>
+      <p class="sutil">Piezas de Higgsfield (voz, imágenes y clips) que esperan generarse. Por la vía Claude, dile: <code>procesa los pedidos IA</code> <button class="icono" data-copiar="procesa los pedidos IA" type="button">Copiar</button></p>
+      <div id="lista-pedidos"></div>
+    </section>
+  </template>
+
+  <template id="t-marcas">
+    <section class="vista">
+      <div class="encabezado">
+        <div><h1>Marcas</h1><p class="sutil">Logo, colores, voz, fotos y diseño de tarjeta de cada negocio.</p></div>
+        <button class="primario" id="btn-nueva-marca">+ Nueva marca</button>
+      </div>
+      <div class="dos-col">
+        <div id="lista-marcas" class="lista"></div>
+        <div id="form-marca" class="panel"></div>
+      </div>
+    </section>
+  </template>
+
+  <div id="dialogo" class="dialogo" hidden><div class="caja"><p id="dialogo-txt"></p><input id="dialogo-input" hidden /><div class="acciones"><button class="secundario" id="dialogo-no">Cancelar</button><button class="primario" id="dialogo-si">Aceptar</button></div></div></div>
+  <div id="aviso" class="aviso" hidden></div>
+  <script src="/panel/app.js"></script>
+</body>
+</html>
