@@ -3,7 +3,7 @@
   "nombre": "Tour virtual Refugio del Viento",
   "marca": "refugio-del-viento",
   "via": "claude",
-  "creado": "2026-10-11 11:01",
+  "creado": "2026-10-11 11:10",
   "proyecto": "/Users/pipe/Documents/Codex/estudio-videos/proyectos/20261011-100504-recorrido-refugio-del-viento",
   "tareas": [
     {
@@ -22,7 +22,10 @@
       "destino": "ia/voz-7472b8e1e2.mp3",
       "costo": 0.89,
       "listo": false,
-      "estado": "pendiente"
+      "estado": "listo",
+      "archivo": "ia/voz-7472b8e1e2.mp3",
+      "error": null,
+      "actualizado": "2026-10-11 11:10:34"
     },
     {
       "id": "clip-8844308e91",
