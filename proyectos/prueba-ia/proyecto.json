@@ -57,7 +57,8 @@
           "titulo": "Plato de la casa",
           "precio": "$34.000",
           "detalle": "Res a la parrilla y ensalada fresca"
-        }
+        },
+        "modelo_imagen": "gpt_alta"
       }
     },
     {
@@ -66,7 +67,7 @@
       "params": {
         "archivo": "marca:fotos/menu-1.jpg",
         "zoom": [
-          1.0,
+          1,
           1.1
         ],
         "rotulo": {
@@ -82,7 +83,7 @@
       "params": {
         "archivo": "marca:fotos/menu-2.jpg",
         "zoom": [
-          1.0,
+          1,
           1.1
         ],
         "rotulo": {
@@ -95,7 +96,7 @@
     {
       "tipo": "cierre",
       "hasta": "fin_voz",
-      "extra": 1.0,
+      "extra": 1,
       "params": {}
     }
   ],
@@ -109,7 +110,7 @@
   },
   "ia": {
     "motor": "higgsfield",
-    "via": "claude",
+    "via": "chatgpt",
     "voz": {
       "activa": true,
       "voice_id": "75e72cd5-011b-4130-a474-e8b1ab341f04",

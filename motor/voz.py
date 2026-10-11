@@ -63,11 +63,12 @@ def _edge(texto, voz, velocidad, mp3):
     return asyncio.run(correr())
 
 
-def _whisper(mp3, pista=""):
+def _whisper(mp3):
     from faster_whisper import WhisperModel
 
+    # Sin initial_prompt: si se le pasa el mismo guion, Whisper se salta el comienzo del audio
     modelo = WhisperModel("small", device="cpu", compute_type="int8")
-    segs, _ = modelo.transcribe(str(mp3), language="es", word_timestamps=True, initial_prompt=pista or None)
+    segs, _ = modelo.transcribe(str(mp3), language="es", word_timestamps=True)
     return [{"w": w.word.strip(), "s": round(w.start, 3), "e": round(w.end, 3)} for s in segs for w in s.words]
 
 
@@ -77,10 +78,10 @@ def preparar(guion, cfg_voz, carpeta):
     carpeta.mkdir(parents=True, exist_ok=True)
     if cfg_voz.get("archivo"):
         mp3 = Path(cfg_voz["archivo"])
-        cache = carpeta / f"palabras-{hashlib.md5(str(mp3).encode()).hexdigest()[:10]}.json"
+        cache = carpeta / f"palabras2-{hashlib.md5(str(mp3).encode()).hexdigest()[:10]}.json"
         if cache.exists():
             return mp3, json.loads(cache.read_text())
-        palabras = _whisper(mp3, pista=guion["texto"][:200])
+        palabras = _whisper(mp3)
         cache.write_text(json.dumps(palabras, ensure_ascii=False))
         return mp3, palabras
     texto = texto_hablado(guion)
