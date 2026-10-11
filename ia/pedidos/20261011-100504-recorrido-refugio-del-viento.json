@@ -1,0 +1,29 @@
+{
+  "pid": "20261011-100504-recorrido-refugio-del-viento",
+  "nombre": "Tour virtual Refugio del Viento",
+  "marca": "refugio-del-viento",
+  "via": "claude",
+  "creado": "2026-10-11 10:18",
+  "proyecto": "/Users/pipe/Documents/Codex/estudio-videos/proyectos/20261011-100504-recorrido-refugio-del-viento",
+  "tareas": [
+    {
+      "id": "voz-0e56d132dc",
+      "tipo": "voz",
+      "escena": null,
+      "nombre": "Voz Marisol",
+      "modelo": "text2speech_v2",
+      "params": {
+        "variant": "elevenlabs",
+        "voice_type": "preset",
+        "voice_id": "75e72cd5-011b-4130-a474-e8b1ab341f04"
+      },
+      "prompt": "Te invito a recorrer Refugio del Viento. Llegamos a la terraza, con el valle a tus pies. Aquí está el jacuzzi privado, abierto las veinticuatro horas. Entramos a la sala y cocina equipada. Sigue la habitación para dos. Y cuando cae la tarde, fogata y noches de luna. Reserva por WhatsApp.",
+      "referencias": [],
+      "destino": "ia/voz-0e56d132dc.mp3",
+      "costo": 0.75,
+      "listo": false,
+      "estado": "pendiente"
+    }
+  ],
+  "costo": 0.75
+}

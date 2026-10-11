@@ -1,128 +1,70 @@
 {
-  "nombre": "Recorrido Refugio del Viento",
+  "nombre": "Tour virtual Refugio del Viento",
   "marca": "refugio-del-viento",
   "plantilla": "libre",
   "formato": "9:16",
   "guion": {
-    "texto": "¿Y si este fin de semana te escapas de verdad? Bienvenidos a Refugio del Viento, cabaña privada en Risaralda. Terraza con vista a la montaña. Habitación para dos. Sala y cocina equipada. Jacuzzi privado, abierto las veinticuatro horas. Atardeceres, fogata y noches de luna. Reserva por WhatsApp."
+    "texto": "Te invito a recorrer Refugio del Viento. Llegamos a la terraza, con el valle a tus pies. Aquí está el jacuzzi privado, abierto las veinticuatro horas. Entramos a la sala y cocina equipada. Sigue la habitación para dos. Y cuando cae la tarde, fogata y noches de luna. Reserva por WhatsApp."
   },
   "escenas": [
     {
-      "tipo": "imagen",
-      "hasta": "@Bienvenidos a",
-      "params": {
-        "archivo": "marca:fotos/recorrido-07.jpg",
-        "zoom": [
-          1.0,
-          1.12
-        ],
-        "foco": [
-          0.5,
-          0.4
-        ]
-      }
-    },
-    {
-      "tipo": "imagen",
-      "hasta": "@Terraza con",
-      "params": {
-        "archivo": "marca:fotos/recorrido-16.jpg",
-        "zoom": [
-          1.0,
-          1.1
-        ],
-        "foco": [
-          0.5,
-          0.5
-        ]
-      }
-    },
-    {
-      "tipo": "imagen",
-      "hasta": "@Habitación para",
-      "params": {
-        "archivo": "marca:fotos/recorrido-08.jpg",
-        "zoom": [
-          1.0,
-          1.1
-        ],
-        "foco": [
-          0.5,
-          0.5
-        ],
-        "foco_fin": [
-          0.6,
-          0.45
-        ]
-      }
-    },
-    {
-      "tipo": "imagen",
-      "hasta": "@Sala y",
-      "params": {
-        "archivo": "marca:fotos/recorrido-03.jpg",
-        "zoom": [
-          1.0,
-          1.1
-        ],
-        "foco": [
-          0.5,
-          0.6
-        ]
-      }
-    },
-    {
-      "tipo": "imagen",
-      "hasta": "@Jacuzzi privado",
-      "params": {
-        "archivo": "marca:fotos/recorrido-02.jpg",
-        "zoom": [
-          1.0,
-          1.1
-        ],
-        "foco": [
-          0.5,
-          0.55
-        ]
-      }
-    },
-    {
-      "tipo": "clip_ia",
-      "hasta": "@Atardeceres",
-      "params": {
-        "imagen": "marca:fotos/recorrido-05.jpg",
-        "prompt": "Slow push-in on a private outdoor hot tub with gently rippling water and a soft mist rising, mountain valley view in the background at dusk, warm natural light, calm cinematic travel commercial style",
-        "modelo": "kling_pro",
-        "duracion_clip": 5,
-        "rotulo": {
-          "titulo": "Jacuzzi privado",
-          "detalle": "Abierto las 24 horas"
-        }
-      }
-    },
-    {
-      "tipo": "imagen",
-      "hasta": "@noches de",
-      "params": {
-        "archivo": "marca:fotos/recorrido-17.jpg",
-        "zoom": [
-          1.0,
-          1.12
-        ],
-        "foco": [
-          0.5,
-          0.5
-        ]
-      }
-    },
-    {
-      "tipo": "imagen",
+      "tipo": "tour",
       "hasta": "@Reserva por",
       "params": {
-        "archivo": "marca:fotos/recorrido-18.jpg",
-        "zoom": [
-          1.0,
-          1.12
+        "paradas": [
+          {
+            "foto": "marca:fotos/recorrido-07.jpg",
+            "etiqueta": "Vista",
+            "foco": [
+              0.5,
+              0.45
+            ]
+          },
+          {
+            "foto": "marca:fotos/recorrido-16.jpg",
+            "etiqueta": "Terraza",
+            "foco": [
+              0.6,
+              0.55
+            ],
+            "desde": "@Llegamos a"
+          },
+          {
+            "foto": "marca:fotos/recorrido-05.jpg",
+            "etiqueta": "Jacuzzi",
+            "foco": [
+              0.5,
+              0.55
+            ],
+            "desde": "@Aquí está"
+          },
+          {
+            "foto": "marca:fotos/recorrido-02.jpg",
+            "etiqueta": "Sala y cocina",
+            "foco": [
+              0.38,
+              0.42
+            ],
+            "desde": "@Entramos a"
+          },
+          {
+            "foto": "marca:fotos/recorrido-03.jpg",
+            "etiqueta": "Habitación",
+            "foco": [
+              0.72,
+              0.3
+            ],
+            "desde": "@Sigue la"
+          },
+          {
+            "foto": "marca:fotos/recorrido-18.jpg",
+            "etiqueta": "Noche",
+            "foco": [
+              0.55,
+              0.4
+            ],
+            "desde": "@Y cuando"
+          }
         ]
       }
     },
@@ -149,7 +91,7 @@
       "activa": true,
       "voice_id": "75e72cd5-011b-4130-a474-e8b1ab341f04",
       "nombre": "Marisol",
-      "tempo": 1.1
+      "tempo": 1
     }
   }
 }
