@@ -7,3 +7,5 @@ proyectos/_pruebas/
 ia/descargas/
 *.part
 .DS_Store
+modelos/
+cache/

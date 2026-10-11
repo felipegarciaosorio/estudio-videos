@@ -3,7 +3,7 @@
   "nombre": "Tour virtual Refugio del Viento",
   "marca": "refugio-del-viento",
   "via": "claude",
-  "creado": "2026-10-11 10:18",
+  "creado": "2026-10-11 10:36",
   "proyecto": "/Users/pipe/Documents/Codex/estudio-videos/proyectos/20261011-100504-recorrido-refugio-del-viento",
   "tareas": [
     {
@@ -23,7 +23,65 @@
       "costo": 0.75,
       "listo": false,
       "estado": "pendiente"
+    },
+    {
+      "id": "clip-8844308e91",
+      "tipo": "video",
+      "escena": 0,
+      "nombre": "Jacuzzi · Kling 3.0 Pro",
+      "catalogo": "kling_pro",
+      "modelo": "kling3_0",
+      "params": {
+        "mode": "pro",
+        "sound": "off",
+        "duration": 5,
+        "aspect_ratio": "9:16"
+      },
+      "prompt": "Slow push-in on a private outdoor hot tub with gently rippling water and a soft mist rising, mountain valley view in the background at dusk, warm natural light, calm cinematic travel commercial style",
+      "referencias": [
+        {
+          "ruta": "/Users/pipe/Documents/Codex/estudio-videos/marcas/refugio-del-viento/fotos/recorrido-05.jpg",
+          "rol": "start_image"
+        }
+      ],
+      "depende": null,
+      "destino": "ia/clip-8844308e91.mp4",
+      "costo": 8.75,
+      "parada": 2,
+      "listo": false,
+      "estado": "pendiente"
+    },
+    {
+      "id": "clip-656ebee04d",
+      "tipo": "video",
+      "escena": 0,
+      "nombre": "Sala y cocina · Kling 3.0 Omni · de foto a foto (Pro)",
+      "catalogo": "kling_frames",
+      "modelo": "kling_o3_flf",
+      "params": {
+        "mode": "pro",
+        "sound": "off",
+        "duration": 5,
+        "aspect_ratio": "9:16"
+      },
+      "prompt": "Smooth forward camera walk through the cozy living room and kitchen toward the bedroom, steady gimbal movement, warm interior light, realistic real estate tour style",
+      "referencias": [
+        {
+          "ruta": "/Users/pipe/Documents/Codex/estudio-videos/marcas/refugio-del-viento/fotos/recorrido-02.jpg",
+          "rol": "start_image"
+        },
+        {
+          "ruta": "/Users/pipe/Documents/Codex/estudio-videos/marcas/refugio-del-viento/fotos/recorrido-03.jpg",
+          "rol": "end_image"
+        }
+      ],
+      "depende": null,
+      "destino": "ia/clip-656ebee04d.mp4",
+      "costo": 6.25,
+      "parada": 3,
+      "listo": false,
+      "estado": "pendiente"
     }
   ],
-  "costo": 0.75
+  "costo": 15.75
 }

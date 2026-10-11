@@ -30,6 +30,15 @@ Reglas para escribir el guion y los prompts de IA de manera que el video salga b
   - `kling_pro` (8,75): es el más fiel al producto.
   - `seedance_mini` (5): es el más barato; sirve para ambiente y fondos.
 
+## 3.b Tour virtual (`tour`): elige el modo de cada espacio
+Un tour recorre espacios con fotos (terraza, sala, habitación, jacuzzi...). Cada espacio elige **cómo se mueve**:
+- `plano` (gratis): acercamiento suave hacia el foco. Para fotos poco profundas o cuando el ritmo es rápido.
+- `profundidad` (gratis): mapa de profundidad real; lo cercano se mueve más que lo lejano. Funciona mejor en fotos con primer plano, medio y fondo (pasillos, terrazas, habitaciones). Usa `trayectoria`: `avanzar`, `derecha`, `izquierda`, `subir` u `orbita`.
+- `ia` (de pago): Kling anima la foto. Úsalo en el espacio estrella (el jacuzzi con vapor, el atardecer). Prompt en inglés, una acción y un movimiento de cámara.
+- `ia_paso` (de pago, más barato): Kling Omni viaja de esta foto a la de la **siguiente parada**. Úsalo en UNA transición entre espacios contiguos (sala → habitación). Describe el trayecto de la cámara ("steady forward walk through the living room toward the bedroom door"). Las dos fotos deben ser espacios vecinos y con luz parecida.
+- Receta de ahorro: todo en `profundidad`, y 1 o 2 espacios clave con IA. Mientras la IA no llegue, esos espacios se ven en `profundidad` con el aviso «IA pendiente».
+- `foco` es el punto de la foto hacia el que entra la cámara: una puerta, una ventana, el centro del jacuzzi.
+
 ## 4. Imagen IA (`imagen_ia`) y keyframes
 - Úsala cuando el cliente no tiene una buena foto, o para un keyframe del que luego sale un clip (`imagen_prompt` dentro de `clip_ia`).
 - Pasa **referencias** (logo, tarjeta, producto, foto del lugar) para que el resultado sea fiel.

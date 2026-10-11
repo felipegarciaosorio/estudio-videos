@@ -121,7 +121,8 @@ def tarea_imagen(params, formato, dir_proyecto, marca_dir, escena=None):
 
 
 def tareas_clip(params, formato, dir_proyecto, marca_dir, escena=None):
-    """Clip IA: [keyframe opcional, clip]."""
+    """Clip IA: [keyframe opcional, clip]. Con un modelo "de foto a foto" (frames) y `imagen_final`,
+    el clip viaja de la foto de inicio a la foto final (transición entre dos espacios)."""
     salida = []
     inicio = _ref(dir_proyecto, marca_dir, params.get("imagen"))
     if params.get("imagen_prompt"):
@@ -131,23 +132,54 @@ def tareas_clip(params, formato, dir_proyecto, marca_dir, escena=None):
         salida.append(kf)
         inicio = str(Path(dir_proyecto) / kf["destino"])
     m = _modelo("video", params.get("modelo"))
+    final = _ref(dir_proyecto, marca_dir, params.get("imagen_final")) if m.get("frames") else None
     dur = int(params.get("duracion_clip") or m["duraciones"][0])
-    h = _hash("clip", m["modelo"], m["params"], params.get("prompt", ""), inicio, dur, formato)
+    h = _hash("clip", m["modelo"], m["params"], params.get("prompt", ""), inicio, final, dur, formato)
+    refs = ([{"ruta": inicio, "rol": "start_image"}] if inicio else []) + ([{"ruta": final, "rol": "end_image"}] if final else [])
     salida.append({
         "id": f"clip-{h}", "tipo": "video", "escena": escena, "nombre": m["nombre"], "catalogo": m["id"],
         "modelo": m["modelo"], "params": {**m["params"], "duration": dur, "aspect_ratio": formato},
-        "prompt": params.get("prompt", ""),
-        "referencias": [{"ruta": inicio, "rol": "start_image"}] if inicio else [],
+        "prompt": params.get("prompt", ""), "referencias": refs,
         "depende": salida[0]["id"] if params.get("imagen_prompt") else None,
         "destino": f"ia/clip-{h}.mp4", "costo": round(m["costo_5s"] * math.ceil(dur / 5), 2),
     })
     return salida
 
 
-def destino_escena(params, tipo, formato, dir_proyecto, marca_dir):
+def params_parada(paradas, j):
+    """Parámetros de clip_ia equivalentes a una parada de tour con modo "ia" o "ia_paso"
+    (None si la parada no usa IA)."""
+    p = paradas[j]
+    modo = p.get("modo")
+    if modo not in ("ia", "ia_paso"):
+        return None
+    params = {"imagen": p.get("foto"), "prompt": p.get("prompt", ""), "modelo": p.get("modelo") or ("kling_frames" if modo == "ia_paso" else None)}
+    if p.get("duracion_clip"):
+        params["duracion_clip"] = p["duracion_clip"]
+    if modo == "ia_paso" and j + 1 < len(paradas):
+        params["imagen_final"] = paradas[j + 1].get("foto")
+    return params
+
+
+def tareas_escena(e, formato, dir_proyecto, marca_dir, escena=None):
+    """Tareas IA de una escena (clip_ia, imagen_ia o paradas de un tour)."""
+    tipo, pr = e.get("tipo"), e.get("params") or {}
     if tipo == "clip_ia":
-        return tareas_clip(params, formato, dir_proyecto, marca_dir)[-1]["destino"]
-    return tarea_imagen(params, formato, dir_proyecto, marca_dir)["destino"]
+        return tareas_clip(pr, formato, dir_proyecto, marca_dir, escena)
+    if tipo == "imagen_ia":
+        return [tarea_imagen(pr, formato, dir_proyecto, marca_dir, escena)]
+    if tipo == "tour":
+        salida = []
+        paradas = [{**q, "modo": q.get("modo") or pr.get("modo")} for q in pr.get("paradas") or []]
+        for j in range(len(paradas)):
+            params = params_parada(paradas, j)
+            if params:
+                for t in tareas_clip(params, formato, dir_proyecto, marca_dir, escena):
+                    t["parada"] = j
+                    t["nombre"] = f"{paradas[j].get('etiqueta') or 'Parada ' + str(j + 1)} · {t['nombre']}"
+                    salida.append(t)
+        return salida
+    return []
 
 
 def tareas(dir_proyecto, p=None):
@@ -165,10 +197,7 @@ def tareas(dir_proyecto, p=None):
     if tv:
         salida.append(tv)
     for i, e in enumerate(p.get("escenas", [])):
-        if e["tipo"] == "clip_ia":
-            salida += tareas_clip(e.get("params", {}), formato, dir_proyecto, marca_dir, i)
-        elif e["tipo"] == "imagen_ia":
-            salida.append(tarea_imagen(e.get("params", {}), formato, dir_proyecto, marca_dir, i))
+        salida += tareas_escena(e, formato, dir_proyecto, marca_dir, i)
     for t in salida:
         r = resultado(dir_proyecto, t["destino"])
         t["listo"] = bool(r)
@@ -182,14 +211,15 @@ def estimar(lista):
 
 
 def huella(e, dir_proyecto, p):
-    """Para la caché de escenas: cambia cuando llega el resultado de la IA."""
-    if e["tipo"] not in ("clip_ia", "imagen_ia"):
-        return ""
+    """Para la caché de escenas: cambia cuando llega (o cambia) el resultado de la IA."""
     from .marca import Marca
 
-    destino = destino_escena(e.get("params", {}), e["tipo"], p.get("formato", "9:16"), dir_proyecto, Marca(p["marca"]).dir)
-    r = resultado(dir_proyecto, destino)
-    return f"{r.name}:{r.stat().st_mtime}" if r else "pendiente"
+    lista = tareas_escena(e, p.get("formato", "9:16"), dir_proyecto, Marca(p["marca"]).dir)
+    partes = []
+    for t in lista:
+        r = resultado(dir_proyecto, t["destino"])
+        partes.append(f"{r.name}:{r.stat().st_mtime}" if r else "pendiente")
+    return "|".join(partes)
 
 
 def voz_lista(dir_proyecto, p, trabajo):

@@ -1,8 +1,10 @@
 edge-tts==7.2.8
 fastapi==0.143.0
 faster-whisper==1.2.1
+higgsfield-client==0.2.0
 numpy==2.4.6
+onnxruntime==1.23.2
+opencv-python-headless==5.0.0.93
 pillow==12.3.0
 python-multipart==0.0.32
 uvicorn==0.54.0
-higgsfield-client==0.2.0

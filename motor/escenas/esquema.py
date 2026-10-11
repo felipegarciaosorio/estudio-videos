@@ -58,14 +58,25 @@ ESCENAS = {
         {"id": "rotulo.titulo", "etiqueta": "Rótulo: nombre", "tipo": "texto"},
         {"id": "rotulo.precio", "etiqueta": "Rótulo: precio", "tipo": "texto"},
         {"id": "rotulo.detalle", "etiqueta": "Rótulo: detalle", "tipo": "texto"}]},
+    "profundidad": {"nombre": "Foto con profundidad real (gratis)", "campos": [
+        {"id": "archivo", "etiqueta": "Foto", "tipo": "foto"},
+        {"id": "trayectoria", "etiqueta": "Movimiento de la cámara", "tipo": "opciones", "opciones": ["avanzar", "derecha", "izquierda", "subir", "orbita"]},
+        {"id": "intensidad", "etiqueta": "Intensidad (0.5 sutil, 1 normal, 1.5 fuerte)", "tipo": "numero", "defecto": 1},
+        {"id": "foco", "etiqueta": "Hacia dónde entra la cámara x, y (0-1)", "tipo": "par", "defecto": [0.5, 0.5]},
+        {"id": "rotulo.titulo", "etiqueta": "Rótulo: nombre", "tipo": "texto"},
+        {"id": "rotulo.precio", "etiqueta": "Rótulo: precio", "tipo": "texto"},
+        {"id": "rotulo.detalle", "etiqueta": "Rótulo: detalle", "tipo": "texto"}]},
     "tour": {"nombre": "Tour virtual (recorrido con fotos)", "campos": [
         {"id": "paradas", "etiqueta": "Espacios del recorrido, en orden", "tipo": "lista", "campos": [
             {"id": "foto", "etiqueta": "Foto", "tipo": "foto"},
             {"id": "etiqueta", "etiqueta": "Nombre del espacio (TERRAZA)", "tipo": "texto"},
+            {"id": "modo", "etiqueta": "Cómo se mueve", "tipo": "modo_tour", "defecto": "plano"},
+            {"id": "desde", "etiqueta": "Empieza cuando la voz dice (frase) o segundo", "tipo": "texto"},
             {"id": "foco", "etiqueta": "Hacia dónde entra la cámara x, y (0-1)", "tipo": "par", "defecto": [0.5, 0.5]},
-            {"id": "desde", "etiqueta": "Empieza cuando la voz dice (frase) o segundo", "tipo": "texto"}]},
-        {"id": "transicion", "etiqueta": "Duración del cruce entre espacios (s)", "tipo": "numero", "defecto": 0.8},
-        {"id": "avance", "etiqueta": "Cuánto avanza la cámara en cada espacio (0.22)", "tipo": "numero", "defecto": 0.22}]},
+            {"id": "trayectoria", "etiqueta": "Movimiento (modo profundidad)", "tipo": "opciones", "opciones": ["avanzar", "derecha", "izquierda", "subir", "orbita"]},
+            {"id": "prompt", "etiqueta": "Prompt IA, en inglés (modos IA)", "tipo": "area"},
+            {"id": "modelo", "etiqueta": "Modelo IA (modos IA)", "tipo": "modelo_video", "automatico": True}]},
+        {"id": "transicion", "etiqueta": "Duración del cruce entre espacios (s)", "tipo": "numero", "defecto": 0.8}]},
     "cierre": {"nombre": "Cierre de marca", "campos": [
         {"id": "subtitulo", "etiqueta": "Subtítulo", "tipo": "texto"},
         {"id": "precio", "etiqueta": "Precio", "tipo": "texto"},

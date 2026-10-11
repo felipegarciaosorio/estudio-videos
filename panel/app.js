@@ -149,12 +149,22 @@ function campo(def, valor, onCambio, ctx = {}) {
       ta.oninput = () => onCambio(def.tipo === "lineas" ? ta.value.split("\n").filter(Boolean) : ta.value);
       return el("label", {}, etiqueta, ta);
     }
+    case "modo_tour": {
+      const modos = [["plano", "Plano · gratis (acercamiento suave)"], ["profundidad", "Profundidad real · gratis"],
+        ["ia", "✦ IA · clip animado de la foto (Kling)"], ["ia_paso", "✦ IA · paso de esta foto a la siguiente"]];
+      const s = el("select", {}, ...modos.map(([v, t]) => el("option", { value: v }, t)));
+      s.value = valor || "plano";
+      s.onchange = () => onCambio(s.value);
+      return el("label", {}, etiqueta, s);
+    }
     case "modelo_video":
     case "modelo_imagen": {
       const lista = datos.ia?.[def.tipo === "modelo_video" ? "video" : "imagen"] || [];
       const costo = (m) => (def.tipo === "modelo_video" ? `${m.costo_5s} cr / 5 s` : `${m.costo} cr`);
-      const s = el("select", {}, ...lista.map((m) => el("option", { value: m.id, title: m.nota || "" }, `${m.nombre} · ${costo(m)}${m.recomendado ? " ★" : ""}`)));
-      s.value = valor || lista.find((m) => m.recomendado)?.id || "";
+      const opciones = lista.map((m) => el("option", { value: m.id, title: m.nota || "" }, `${m.nombre} · ${costo(m)}${m.recomendado ? " ★" : ""}`));
+      if (def.automatico) opciones.unshift(el("option", { value: "" }, "Automático (según el modo)"));
+      const s = el("select", {}, ...opciones);
+      s.value = valor || (def.automatico ? "" : lista.find((m) => m.recomendado)?.id || "");
       if (!valor && s.value) setTimeout(() => onCambio(s.value));
       const nota = el("span", { class: "sutil" }, lista.find((m) => m.id === s.value)?.nota || "");
       s.onchange = () => { onCambio(s.value); nota.textContent = lista.find((m) => m.id === s.value)?.nota || ""; };
@@ -340,6 +350,7 @@ async function vistaEditor(pid) {
   $("#et-grande").value = et.grande || "";
   $("#et-pequeno").value = et.pequeno || "";
 
+  const usaIA = (e) => !!datos.escenas[e.tipo]?.ia || (e.tipo === "tour" && (e.params?.paradas || []).some((x) => /^ia/.test(x.modo || e.params?.modo || "")));
   // ---- motor (gratis / Higgsfield)
   const iaCfg = { motor: "gratis", via: "claude", ...(p.ia || {}) };
   iaCfg.voz = { activa: true, voice_id: "75e72cd5-011b-4130-a474-e8b1ab341f04", nombre: "Marisol", tempo: 1.1, ...(iaCfg.voz || {}) };
@@ -499,13 +510,14 @@ async function vistaEditor(pid) {
           aviso("Escribe qué pasa en el clip (en inglés): sujeto, acción, cámara y luz");
         } }, "✦ Convertir en clip IA"));
       }
-      const infoIA = def.ia ? el("div", { class: "info-ia" }) : null;
+      const infoIA = def.ia || e.tipo === "tour" ? el("div", { class: "info-ia" }) : null;
       const revisarIA = async () => {
         if (!infoIA) return;
         try {
           const r = await api(`/api/proyectos/${pid}/ia/revisar`, { method: "POST", body: { escena: e, formato: $("#formato").value } });
+          if (e.tipo === "tour" && !r.tareas.length && !r.avisos.length) { infoIA.replaceChildren(); return; }
           infoIA.replaceChildren(
-            el("strong", {}, r.listo ? "✓ Pieza IA lista" : `Costo: ${creditos(r.costo)}`),
+            el("strong", {}, r.listo ? "✓ Piezas IA listas" : `Costo IA de este tour: ${creditos(r.costo)}`),
             ...r.avisos.map((a) => el("p", { class: "aviso-ia" }, a)));
         } catch { /* sin conexión: no se revisa */ }
       };
@@ -513,6 +525,7 @@ async function vistaEditor(pid) {
       def.campos.forEach((cdef) => tarjeta.append(campo(cdef, leer(e.params, cdef.id), (v) => {
         escribir(e.params, cdef.id, v);
         json.value = JSON.stringify(e.params, null, 2);
+        if (!esIA() && usaIA(e)) { iaCfg.motor = "higgsfield"; pintarMotor(); aviso("Usas IA en este tour: se activó el motor Higgsfield"); refrescarIA(true); }
         clearTimeout(tRevisar); tRevisar = setTimeout(revisarIA, 600);
       }, ctx)));
       if (infoIA) { tarjeta.append(infoIA); revisarIA(); }
@@ -538,7 +551,7 @@ async function vistaEditor(pid) {
     const vozIA = voces.find((x) => x.id === $("#ia-voz-id").value);
     p.ia = { ...iaCfg, via: $("#ia-via").value,
       voz: { activa: $("#ia-voz").checked, voice_id: $("#ia-voz-id").value, nombre: vozIA?.nombre || "", tempo: parseFloat($("#ia-tempo").value) } };
-    if (!esIA() && !p.escenas.some((e) => datos.escenas[e.tipo]?.ia)) p.ia.motor = "gratis";
+    if (!esIA() && !p.escenas.some(usaIA)) p.ia.motor = "gratis";
     p.capas = { ...(p.capas || {}), subtitulos: $("#cap-subtitulos").checked, logo: $("#cap-logo").checked };
     const desde = $("#et-desde").value.trim();
     if (desde && $("#et-grande").value.trim()) {

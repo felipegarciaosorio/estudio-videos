@@ -24,7 +24,7 @@ from . import ia
 IDEAS = RAIZ / "ia" / "ideas"
 PALABRAS_POR_S = 2.6
 CAMARA = re.compile(r"push[- ]?in|pull[- ]?(back|out)|dolly|pan(s|ning)?\b|orbit|tilt|zoom|tracking|crane|static|handheld|"
-                    r"close[- ]?up|aerial|truck|arc shot|slow motion", re.I)
+                    r"close[- ]?up|aerial|truck|arc shot|slow motion|walk(s|ing)?\b|forward|gimbal|glide|gliding|fly|flies|flying|sweep|reveal|move(s|ing)? (through|toward|towards|into)", re.I)
 TEXTO = re.compile(r"\b(text|logo|logos|words?|letters?|sign|signage|caption|title|price|texto|letrero|precio|título)\b", re.I)
 ESPANOL = re.compile(r"\b(el|la|los|las|con|una|del|que|sobre|mesa|plato|cámara)\b", re.I)
 VARIAS = re.compile(r"\b(then|after that|and finally|luego|después)\b", re.I)
@@ -35,6 +35,16 @@ def revisar(e):
     """Avisos de una escena IA (sin costo, antes de pagar)."""
     t, pr = e.get("tipo"), e.get("params") or {}
     avisos = []
+    if t == "tour":
+        paradas = pr.get("paradas") or []
+        for j, p in enumerate(paradas):
+            modo = p.get("modo") or pr.get("modo")
+            if modo in ("ia", "ia_paso"):
+                sub = {"tipo": "clip_ia", "params": {"imagen": p.get("foto"), "prompt": p.get("prompt", "")}}
+                if modo == "ia_paso" and j + 1 >= len(paradas):
+                    avisos.append(f"{p.get('etiqueta') or 'Parada ' + str(j + 1)}: «de foto a foto» necesita una parada siguiente (es la foto final).")
+                avisos += [f"{p.get('etiqueta') or 'Parada ' + str(j + 1)}: {a}" for a in revisar(sub)]
+        return avisos
     if t not in ("clip_ia", "imagen_ia"):
         return avisos
     prompt = (pr.get("prompt") or "").strip()

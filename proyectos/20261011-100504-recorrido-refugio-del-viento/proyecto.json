@@ -18,7 +18,9 @@
             "foco": [
               0.5,
               0.45
-            ]
+            ],
+            "modo": "profundidad",
+            "trayectoria": "derecha"
           },
           {
             "foto": "marca:fotos/recorrido-16.jpg",
@@ -27,7 +29,9 @@
               0.6,
               0.55
             ],
-            "desde": "@Llegamos a"
+            "desde": "@Llegamos a",
+            "modo": "profundidad",
+            "trayectoria": "avanzar"
           },
           {
             "foto": "marca:fotos/recorrido-05.jpg",
@@ -36,7 +40,10 @@
               0.5,
               0.55
             ],
-            "desde": "@Aquí está"
+            "desde": "@Aquí está",
+            "modo": "ia",
+            "modelo": "kling_pro",
+            "prompt": "Slow push-in on a private outdoor hot tub with gently rippling water and a soft mist rising, mountain valley view in the background at dusk, warm natural light, calm cinematic travel commercial style"
           },
           {
             "foto": "marca:fotos/recorrido-02.jpg",
@@ -45,7 +52,10 @@
               0.38,
               0.42
             ],
-            "desde": "@Entramos a"
+            "desde": "@Entramos a",
+            "modo": "ia_paso",
+            "modelo": "kling_frames",
+            "prompt": "Smooth forward camera walk through the cozy living room and kitchen toward the bedroom, steady gimbal movement, warm interior light, realistic real estate tour style"
           },
           {
             "foto": "marca:fotos/recorrido-03.jpg",
@@ -54,7 +64,9 @@
               0.72,
               0.3
             ],
-            "desde": "@Sigue la"
+            "desde": "@Sigue la",
+            "modo": "profundidad",
+            "trayectoria": "avanzar"
           },
           {
             "foto": "marca:fotos/recorrido-18.jpg",
@@ -63,7 +75,8 @@
               0.55,
               0.4
             ],
-            "desde": "@Y cuando"
+            "desde": "@Y cuando",
+            "modo": "plano"
           }
         ]
       }
@@ -91,7 +104,7 @@
       "activa": true,
       "voice_id": "75e72cd5-011b-4130-a474-e8b1ab341f04",
       "nombre": "Marisol",
-      "tempo": 1
+      "tempo": 1.1
     }
   }
 }

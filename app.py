@@ -400,13 +400,7 @@ def api_revisar_escena(pid: str, datos: dict):
     carpeta = _carpeta(pid)
     e, formato = datos.get("escena") or {}, datos.get("formato", "9:16")
     marca_dir = Marca(prj.cargar(pid)["marca"]).dir
-    pr = e.get("params") or {}
-    if e.get("tipo") == "clip_ia":
-        lista = ia.tareas_clip(pr, formato, carpeta, marca_dir)
-    elif e.get("tipo") == "imagen_ia":
-        lista = [ia.tarea_imagen(pr, formato, carpeta, marca_dir)]
-    else:
-        lista = []
+    lista = ia.tareas_escena(e, formato, carpeta, marca_dir)
     for t in lista:
         t["listo"] = bool(ia.resultado(carpeta, t["destino"]))
     return {"avisos": asistente.revisar(e), "costo": ia.estimar(lista), "listo": bool(lista) and all(t["listo"] for t in lista),

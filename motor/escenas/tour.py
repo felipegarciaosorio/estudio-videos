@@ -1,24 +1,35 @@
 """Tour virtual: recorrido por espacios a partir de FOTOS, con sensación de avanzar.
 
-La cámara entra despacio hacia el punto de interés de cada foto (una puerta, una
-ventana, el jacuzzi) y, al cambiar de espacio, "atraviesa" ese punto: la foto se
-acerca con desenfoque de movimiento y la siguiente emerge desde atrás. Arriba a la
-izquierda va el nombre del espacio y un indicador de recorrido (puntos).
+La cámara entra hacia un punto de interés de cada foto (una puerta, una ventana, el
+jacuzzi) y, al cambiar de espacio, "atraviesa" ese punto: la foto se acerca con
+desenfoque de movimiento y la siguiente emerge desde atrás. Arriba a la izquierda va el
+nombre del espacio y un indicador de recorrido (puntos).
+
+Cada espacio elige CÓMO se mueve (se pueden combinar gratis e IA en el mismo tour):
+  "plano"        gratis: la foto se acerca suavemente hacia el foco
+  "profundidad"  gratis: profundidad real (mapa de profundidad + paralaje); lo cercano se
+                 mueve más que lo lejano, como si la cámara caminara
+  "ia"           IA (Kling): anima la foto con un clip de video
+  "ia_paso"      IA (Kling Omni, de foto a foto): viaja de esta foto a la de la siguiente parada
+Mientras el clip de IA no existe, ese espacio se ve en "profundidad" con el aviso "IA pendiente".
 
 params:
   paradas      lista de espacios, en el orden del recorrido:
-                 foto      imagen (proyecto o "marca:fotos/x.jpg")
-                 etiqueta  nombre del espacio que se muestra ("TERRAZA")
-                 foco      [x, y] hacia dónde entra la cámara (0.5, 0.5 = centro)
-                 desde     segundo (en la escena) o "@frase" en que empieza ese espacio;
-                           la primera parada empieza en 0
+                 foto, etiqueta ("TERRAZA"), foco [x, y] (hacia dónde entra la cámara),
+                 desde (segundo o "@frase" en que empieza; la primera parada empieza en 0),
+                 modo ("plano"), trayectoria ("avanzar" | "derecha" | "izquierda" | "subir" | "orbita"),
+                 intensidad (1.0), prompt y modelo (para "ia" / "ia_paso"; ver ia/catalogo.json)
+  modo         modo por defecto de las paradas que no lo indican ("plano")
   transicion   duración del cruce entre espacios, en segundos (0.8)
-  avance       cuánto se acerca la cámara en cada espacio (0.22 = 22 %)
+  avance       cuánto se acerca la cámara en el modo "plano" (0.22 = 22 %)
   indicador    true: nombre del espacio y puntos de recorrido (por defecto)
 """
+import shutil
+
 from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
-from ..base import FPS, EscritorVideo, cubrir, ease, ease_out, fuente
+from .. import ia
+from ..base import FFMPEG, FPS, EscritorVideo, cubrir, duracion, ease, ease_out, fuente, run
 from . import t_de
 
 
@@ -53,7 +64,6 @@ def _indicador(ctx, s, etiquetas):
         d.rounded_rectangle([x0, y0, x0 + 52 * s + tw + 2 * pad, y0 + th + 2 * pad], 24 * s, fill=(12, 16, 22, 185))
         d.ellipse([x0 + pad, y0 + pad + th / 2 - 11 * s, x0 + pad + 22 * s, y0 + pad + th / 2 + 11 * s], fill=prim + (255,))
         d.text((x0 + pad + 46 * s - b[0], y0 + pad - b[1]), et, font=f, fill=(255, 255, 255))
-        # puntos de recorrido
         yp = y0 + th + 2 * pad + 26 * s
         x = x0 + 4 * s
         for j in range(len(etiquetas)):
@@ -65,16 +75,43 @@ def _indicador(ctx, s, etiquetas):
     return capas
 
 
+def _aviso_ia(ctx, s, texto):
+    capa = Image.new("RGBA", (ctx.w, ctx.h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(capa)
+    f = fuente("avenir-bold", 34 * s)
+    b = d.textbbox((0, 0), texto, font=f)
+    x, y, pad = 48 * s, ctx.h * (0.64 if ctx.h > ctx.w else 0.7), 18 * s
+    d.rounded_rectangle([x, y, x + b[2] - b[0] + 2 * pad, y + b[3] - b[1] + 2 * pad], 14 * s, fill=(20, 20, 20, 205))
+    d.text((x + pad - b[0], y + pad - b[1]), texto, font=f, fill=(255, 214, 102))
+    return capa
+
+
+def _extraer_clip(clip, destino, w, h, span):
+    """Fotogramas del clip de IA como JPG (acceso aleatorio), ajustados al tiempo del espacio."""
+    if destino.exists() and any(destino.iterdir()):
+        return sorted(destino.glob("*.jpg"))
+    destino.mkdir(parents=True, exist_ok=True)
+    vel = min(2.0, max(0.5, duracion(clip) / max(0.5, span)))
+    run([FFMPEG, "-loglevel", "error", "-y", "-i", str(clip), "-an",
+         "-vf", f"setpts=PTS/{vel},fps={FPS},scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}",
+         "-q:v", "3", str(destino / "%04d.jpg")])
+    return sorted(destino.glob("*.jpg"))
+
+
 def render(params, ctx, salida):
+    from ..profundidad import Paralaje, mapa
+
     w, h = ctx.w, ctx.h
     s = min(w / 1080, h / 1080 * 0.85)
     paradas = params["paradas"]
     n = len(paradas)
     d = float(params.get("transicion", 0.8))
     avance = float(params.get("avance", 0.22))
+    modo_def = params.get("modo", "plano")
+    formato = ia.FORMATO_DE.get((w, h), "9:16")
     imgs = [Image.open(ctx.ruta(p["foto"])).convert("RGB") for p in paradas]
     fondos = [_fondo(im, w, h) for im in imgs]
-    focos = [tuple(p.get("foco", (0.5, 0.5))) for p in paradas]
+    focos = [tuple(p.get("foco") or (0.5, 0.5)) for p in paradas]
     inicios = [0.0]
     for i, p in enumerate(paradas[1:], 1):
         t = t_de(p.get("desde"), ctx, None)
@@ -88,15 +125,40 @@ def render(params, ctx, salida):
     etiquetas = [str(p.get("etiqueta", "")).upper() for p in paradas]
     capas = _indicador(ctx, s, etiquetas) if params.get("indicador", True) and any(etiquetas) else None
 
+    # ---- cómo se mueve cada espacio
+    modos, paralaje, clips, avisos, en_uso = [], {}, {}, {}, set()
+    prefijo = f"tour-{round(ctx.t0 * 10)}-"
+    for i, p in enumerate(paradas):
+        modo = p.get("modo") or modo_def
+        modos.append(modo)
+        if modo in ("ia", "ia_paso"):
+            lista = ia.tareas_clip(ia.params_parada([{**q, "modo": q.get("modo") or modo_def} for q in paradas], i),
+                                   formato, ctx.proyecto, ctx.marca.dir)
+            clip = ia.resultado(ctx.proyecto, lista[-1]["destino"])
+            if clip:
+                carpeta = ctx.trabajo / f"{prefijo}{i}-{clip.stem}-{round((fines[i] - inicios[i]) * 10)}"
+                clips[i] = _extraer_clip(clip, carpeta, w, h, fines[i] - inicios[i] + d * 0.5)
+                en_uso.add(carpeta.name)
+            else:
+                avisos[i] = _aviso_ia(ctx, s, f"IA PENDIENTE · {lista[-1]['nombre'].split(' · ')[-1]}")
+                modos[i] = "profundidad"
+        if modos[i] == "profundidad":
+            paralaje[i] = Paralaje(imgs[i], mapa(ctx.ruta(p["foto"])), w, h, focos[i],
+                                   p.get("trayectoria", "avanzar"), p.get("intensidad", 1.0))
+
     def vista(i, t, zoom_extra=1.0, escala=1.0, k_centro=None):
-        """Foto i en el instante t: avance suave hacia su foco (+ zoom extra al cruzar)."""
+        """Espacio i en el instante t (+ zoom extra al cruzar; escala<1 al emerger)."""
         u = ease(min(1.0, max(0.0, (t - inicios[i]) / max(0.1, fines[i] - inicios[i]))))
-        if k_centro is None:
-            k_centro = u
         fx, fy = focos[i]
-        centro = (0.5 + (fx - 0.5) * k_centro, 0.5 + (fy - 0.5) * k_centro)
-        z = (1.0 + avance * u) * zoom_extra
-        marco = cubrir(imgs[i], w, h, centro, z)
+        if i in clips:
+            cuadros = clips[i]
+            k = min(len(cuadros) - 1, max(0, round((t - inicios[i]) * FPS)))
+            marco = cubrir(Image.open(cuadros[k]).convert("RGB"), w, h, (fx, fy) if zoom_extra > 1 else (0.5, 0.5), zoom_extra)
+        elif modos[i] == "profundidad":
+            marco = Image.fromarray(paralaje[i].frame(u, zoom_extra))
+        else:
+            kc = u if k_centro is None else k_centro
+            marco = cubrir(imgs[i], w, h, (0.5 + (fx - 0.5) * kc, 0.5 + (fy - 0.5) * kc), (1.0 + avance * u) * zoom_extra)
         if escala < 1.0:
             chico = marco.resize((int(w * escala), int(h * escala)), Image.BILINEAR)
             base = fondos[i].copy()
@@ -110,7 +172,6 @@ def render(params, ctx, salida):
         for fr in range(total):
             t = fr / FPS
             actual = max(i for i in range(n) if t >= inicios[i] - (d * 0.65 if i else 0))
-            frame = None
             if actual > 0 and cruce[actual][0] <= t <= cruce[actual][1]:
                 k = (t - cruce[actual][0]) / (cruce[actual][1] - cruce[actual][0])
                 ant = actual - 1
@@ -138,5 +199,11 @@ def render(params, ctx, salida):
                         capa.putalpha(capa.getchannel("A").point(lambda v: int(v * alfa)))
                         capa = ImageChops.offset(capa, 0, int(18 * s * (1 - alfa)))
                     frame = Image.alpha_composite(frame.convert("RGBA"), capa)
+            if actual in avisos:
+                frame = Image.alpha_composite(frame.convert("RGBA"), avisos[actual])
             ev.escribir(frame)
+    # borra fotogramas de clips de versiones anteriores (ocupan disco y se regeneran si hace falta)
+    for carpeta in ctx.trabajo.glob(prefijo + "*"):
+        if carpeta.is_dir() and carpeta.name not in en_uso:
+            shutil.rmtree(carpeta, ignore_errors=True)
     return eventos

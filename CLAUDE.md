@@ -17,6 +17,12 @@ Programa local (Mac M1, 8 GB de RAM) para producir videos cortos de redes para n
 - **Marcas:** `marcas/<slug>/marca.json` con logo, colores, fuentes, voz, cierre, fotos y tarjeta.
 - **Voz gratis:** edge-tts, que da el tiempo de cada palabra. Un audio propio o de IA se transcribe con faster-whisper. `voz.alinear` empata el guion con lo dicho y los cortes `"hasta": "@frase"` caen en la palabra exacta.
 
+## Tour virtual y profundidad
+- `motor/escenas/tour.py`: recorrido por paradas (fotos). Cada parada elige modo: `plano`, `profundidad` (gratis), `ia` o `ia_paso` (Kling). Cruces con zoom y desenfoque, nombre del espacio y puntos de recorrido.
+- `motor/profundidad.py`: mapa de profundidad (Depth Anything V2 Small en ONNX, `modelos/depth-anything-v2-small.onnx`, 99 MB, Apache-2.0; NO está en git: descargarlo con el comando del error) y paralaje con OpenCV. Mapas en `cache/profundidad/`.
+- `motor/escenas/profundidad.py`: una sola foto con profundidad real.
+- Las paradas con IA entran en `ia.tareas_escena` igual que clip_ia. Kling Omni «de foto a foto» (`kling_o3_flf`) usa `start_image` y `end_image`.
+
 ## IA (Higgsfield), ver `motor/ia.py`
 - `proyecto.json` lleva `"ia": {"motor": "higgsfield", "via": "claude|chatgpt|api", "voz": {...}}`.
 - Cada pieza (voz, imagen o clip) es una **tarea** con hash estable y un destino en `proyectos/<id>/ia/`. Cuando el archivo existe, la pieza está lista. Mientras tanto el render sale como **borrador** gratis (edge-tts y la foto con "IA pendiente").
