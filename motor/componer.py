@@ -103,8 +103,8 @@ def componer(dir_proyecto, progreso=None):
             cfg_voz["archivo"] = str((dir_proyecto / cfg_voz["archivo"]).resolve())
         else:
             cfg_voz = {**marca.voz, **cfg_voz}
-        mp3, crudas = voz.preparar(guion, cfg_voz, trabajo)
-        palabras = voz.alinear(guion, crudas, offset=inicio)
+        mp3, crudas = voz.preparar(guion, cfg_voz, trabajo, marca)
+        palabras = voz.alinear(guion, crudas, offset=inicio, marca=marca)
     fin_voz = (duracion(mp3) + inicio) if mp3 else 0.0
 
     # 2. Duración de cada escena

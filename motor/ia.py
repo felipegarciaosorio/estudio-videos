@@ -95,7 +95,9 @@ def tarea_voz(p, dir_proyecto):
     guion = p.get("guion") or {}
     if not v or not guion.get("texto"):
         return None
-    texto = texto_hablado(guion)
+    from .marca import Marca
+
+    texto = texto_hablado(guion, Marca(p["marca"]))
     m = catalogo()["voz_modelo"]
     h = _hash("voz", texto, v["voice_id"], m["params"])
     return {

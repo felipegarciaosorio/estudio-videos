@@ -24,17 +24,35 @@ def limpiar_token(tok):
     return re.sub(r"^[¿¡\"']+|[.,:;?!\"']+$", "", tok)
 
 
-def say_as(guion):
-    """Precios y porcentajes se leen solos ("$26.000" -> "veintiséis mil pesos");
-    "say_as" del guion manda sobre lo automático."""
+def _pronunciacion(marca=None):
+    """Diccionario global (ia/pronunciacion.json) + el de la marca, en minúsculas."""
+    from .base import RAIZ
+
+    f = RAIZ / "ia" / "pronunciacion.json"
+    dic = json.loads(f.read_text()).get("palabras", {}) if f.exists() else {}
+    if marca:
+        dic.update(marca.datos.get("pronunciacion") or {})
+    return {k.lower(): v for k, v in dic.items()}
+
+
+def say_as(guion, marca=None):
+    """Precios y porcentajes se leen solos ("$26.000" -> "veintiséis mil pesos"), las palabras
+    difíciles según el diccionario de pronunciación ("jacuzzi" -> "yacusi"); el "say_as" del
+    guion manda sobre todo lo automático."""
     from .numeros import say_as_auto
 
-    return {**say_as_auto(guion["texto"]), **guion.get("say_as", {})}
+    dic = _pronunciacion(marca)
+    pron = {}
+    for tok in guion["texto"].split():
+        limpio = limpiar_token(tok)
+        if limpio.lower() in dic:
+            pron[limpio] = dic[limpio.lower()]
+    return {**say_as_auto(guion["texto"]), **pron, **guion.get("say_as", {})}
 
 
-def texto_hablado(guion):
+def texto_hablado(guion, marca=None):
     """El guion tal como se debe leer: aplica say_as ("$99.900" -> palabras)."""
-    say_as_ = say_as(guion)
+    say_as_ = say_as(guion, marca)
     salida = []
     for tok in guion["texto"].split():
         clave = limpiar_token(tok)
@@ -72,7 +90,7 @@ def _whisper(mp3):
     return [{"w": w.word.strip(), "s": round(w.start, 3), "e": round(w.end, 3)} for s in segs for w in s.words]
 
 
-def preparar(guion, cfg_voz, carpeta):
+def preparar(guion, cfg_voz, carpeta, marca=None):
     """Devuelve (ruta_mp3, palabras_crudas). Cachea por texto+voz en carpeta/voz-<hash>.*"""
     carpeta = Path(carpeta)
     carpeta.mkdir(parents=True, exist_ok=True)
@@ -84,7 +102,7 @@ def preparar(guion, cfg_voz, carpeta):
         palabras = _whisper(mp3)
         cache.write_text(json.dumps(palabras, ensure_ascii=False))
         return mp3, palabras
-    texto = texto_hablado(guion)
+    texto = texto_hablado(guion, marca)
     clave = hashlib.md5(f"{texto}|{cfg_voz['voz']}|{cfg_voz['velocidad']}".encode()).hexdigest()[:10]
     mp3 = carpeta / f"voz-{clave}.mp3"
     cache = carpeta / f"voz-{clave}.json"
@@ -95,12 +113,12 @@ def preparar(guion, cfg_voz, carpeta):
     return mp3, palabras
 
 
-def alinear(guion, crudas, offset=0.0, tempo=1.0):
+def alinear(guion, crudas, offset=0.0, tempo=1.0, marca=None):
     """Asigna tiempos a cada palabra del guion alineándolo con lo que se dijo.
 
     Lo que no casa (números escritos distinto, palabras juntas o partidas) se
     interpola entre vecinos."""
-    reglas = {k: v.split() for k, v in say_as(guion).items()}
+    reglas = {k: v.split() for k, v in say_as(guion, marca).items()}
     tokens = guion["texto"].split()
     habladas, dueno = [], []
     for i, tok in enumerate(tokens):

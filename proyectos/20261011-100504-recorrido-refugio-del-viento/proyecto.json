@@ -4,7 +4,7 @@
   "plantilla": "libre",
   "formato": "9:16",
   "guion": {
-    "texto": "Te invito a recorrer Refugio del Viento. Llegamos a la terraza, con el valle a tus pies. Aquí está el jacuzzi privado, abierto las veinticuatro horas. Entramos a la sala y cocina equipada. Sigue la habitación para dos. Y cuando cae la tarde, fogata y noches de luna. Reserva por WhatsApp."
+    "texto": "Hay lugares que se sienten desde la primera mirada. Bienvenido a Refugio del Viento, en las montañas de Risaralda. Llegamos a la terraza, con el valle a tus pies. Aquí está el jacuzzi privado, a cualquier hora. Entramos a la sala y cocina, cálidas y equipadas. Sigue la habitación, pensada para dos. Y al caer la tarde, fogata y luna. Reserva por WhatsApp."
   },
   "escenas": [
     {
@@ -75,7 +75,7 @@
               0.55,
               0.4
             ],
-            "desde": "@Y cuando",
+            "desde": "@Y al",
             "modo": "plano"
           }
         ]

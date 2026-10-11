@@ -1,0 +1,16 @@
+{
+  "nota": "Palabras que las voces leen mal. Se escriben como deben sonar en español. Cada marca puede agregar las suyas en marca.json → \"pronunciacion\". El subtítulo sigue mostrando la palabra original.",
+  "palabras": {
+    "jacuzzi": "yacusi",
+    "jacuzzis": "yacusis",
+    "wifi": "uaifai",
+    "wi-fi": "uaifai",
+    "glamping": "glámping",
+    "airbnb": "érbiénbi",
+    "spa": "espá",
+    "check-in": "chekín",
+    "check-out": "chekáut",
+    "smart": "esmárt",
+    "delivery": "delíveri"
+  }
+}
