@@ -2,8 +2,8 @@
 __pycache__/
 .env
 salidas/
-proyectos/*/trabajo/
-proyectos/_pruebas/
+# Proyectos de clientes: solo en este Mac
+proyectos/
 ia/descargas/
 *.part
 .DS_Store
