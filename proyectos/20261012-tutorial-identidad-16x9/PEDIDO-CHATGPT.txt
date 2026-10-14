@@ -1,0 +1,22 @@
+Usa tu conexión con Higgsfield para generar estas piezas EXACTAMENTE con estos parámetros (no cambies los prompts: ya están optimizados). Cuando cada una termine, dame su enlace de descarga con el código de la tarea.
+
+TAREA 1 · código voz-822596dcb4 · voz (texto a voz) · ~2.5 créditos
+- Herramienta: generate_audio · modelo: text2speech_v2
+- Voz: Andre (voice_id f1e8226e-2248-4d5f-b43c-0a79e9949dbf, voice_type preset, variant elevenlabs)
+- Texto exacto: Tu identidad digital, lista en cinco pasos. Te muestro el camino. Entra a tu tarjeta en aurela soluciones punto com. Arriba verás la lista de lo que te falta. Paso uno: quién eres. En Identidad sube tu logo, escribe el nombre de tu negocio, a qué te dedicas y una presentación corta. Paso dos: tu contacto. Pon tu número de WhatsApp, el mensaje con el que te van a escribir y tus redes. Luego guarda los cambios. Paso tres: tus servicios. Elige tu tipo de negocio, crea una categoría y agrega cada servicio con su precio. Paso cuatro: tus fotos. Sube una portada y las fotos de tu negocio. Si quieres, suma también tus horarios, la ubicación, testimonios y preguntas frecuentes. Paso cinco: publica. Mientras no publiques, solo tú ves los cambios. Y listo: tu tarjeta está completa. Por último, en Tarjetas físicas escribe el código de tu tarjeta. Así, con solo acercarla al celular, tus clientes ven tu perfil. ¿Dudas? El botón Ayuda te acompaña en cada sección. Crea tu identidad digital con Aurela.
+
+TAREA 2 · imagen · ~2.75 créditos · guárdala como logo.png
+- Herramienta: generate_image · modelo: gpt_image_2_5 · quality high · aspect_ratio 1:1
+- Prompt exacto: Minimal vintage barbershop emblem: a pair of crossed straight razors and a comb inside a thin circular double line border, gold foil on deep charcoal background, flat vector style, centered, no letters, no text, no words
+
+TAREA 3 · imagen · ~2.75 créditos · guárdala como portada.jpg
+- Herramienta: generate_image · modelo: gpt_image_2_5 · quality high · aspect_ratio 16:9
+- Prompt exacto: Interior of a warm modern Colombian barbershop at golden hour, two classic leather barber chairs, mirrors with warm bulbs, wooden shelves with unbranded grooming products, plants, shallow depth of field, editorial photography, no text, no logos, no people
+
+TAREA 4 · imagen · ~2.75 créditos · guárdala como galeria-1.jpg
+- Herramienta: generate_image · modelo: gpt_image_2_5 · quality high · aspect_ratio 4:3
+- Prompt exacto: Close-up of a barber finishing a fade haircut with clippers on a client seen from behind, warm light, neat workstation, editorial photography, no faces visible, no text, no logos
+
+TAREA 5 · imagen · ~2.75 créditos · guárdala como galeria-2.jpg
+- Herramienta: generate_image · modelo: gpt_image_2_5 · quality high · aspect_ratio 4:3
+- Prompt exacto: Flat lay of barber tools on a dark walnut counter: straight razor, scissors, comb, shaving brush, hot towel rolled, unbranded bottles, warm light, editorial product photography, no text, no logos

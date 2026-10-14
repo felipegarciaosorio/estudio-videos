@@ -8,6 +8,8 @@ params:
   resaltes [{"t0": .., "t1": .., "x": .., "y": .., "w": .., "h": ..}]
   zoom     [{"t": 0, "s": 1.0, "cx": 195, "cy": 422}, ...]
   estrellas {"t0": .., "t1": ..}   5 estrellas genéricas que entran una a una
+  paso     {"n": 2, "titulo": "Tu contacto", "lista": [...]}  chip de tutorial arriba (ver _paso.py)
+  estados también acepta {"t", "hasta", "imgs": [...]}: tipeo repartido (ver expandir_estados)
   fondo    imagen de fondo (se desenfoca y oscurece); por defecto degradado de la marca
 """
 import math
@@ -15,7 +17,7 @@ import math
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 
 from ..base import FPS, EscritorVideo, cubrir, ease
-from . import t_de
+from . import _paso, expandir_estados, t_de
 
 CSS_W, CSS_H = 390, 844
 ORO = (247, 181, 0)
@@ -62,11 +64,12 @@ def _fondo(ctx, ruta):
 
 def render(params, ctx, salida):
     w, h, dur = ctx.w, ctx.h, ctx.dur
-    estados = [{**e, "t": t_de(e.get("t", 0), ctx)} for e in params["estados"]]
+    estados = expandir_estados(params["estados"], ctx)
     imgs = {e["img"]: Image.open(ctx.ruta(e["img"])).convert("RGB") for e in estados}
     toques = [{**tp, "t": t_de(tp["t"], ctx)} for tp in params.get("toques", [])]
     resaltes = [{**r, "t0": t_de(r["t0"], ctx), "t1": t_de(r["t1"], ctx, dur)} for r in params.get("resaltes", [])]
     zoom = [{**z, "t": t_de(z["t"], ctx)} for z in params.get("zoom") or [{"t": 0, "s": 1.0, "cx": CSS_W / 2, "cy": CSS_H / 2}]]
+    zoom.sort(key=lambda z: z["t"])
     estrellas = params.get("estrellas")
     if estrellas:
         estrellas = {"t0": t_de(estrellas["t0"], ctx), "t1": t_de(estrellas.get("t1"), ctx, dur)}
@@ -74,10 +77,14 @@ def render(params, ctx, salida):
     # Tamaño del teléfono según el formato (vertical, cuadrado u horizontal)
     bezel = round(20 * w / 1080) if h > w else round(20 * h / 1920 * 1.6)
     pantalla_h = min(round(0.685 * w * CSS_H / CSS_W), round(h * 0.86) - 2 * bezel)
+    if params.get("paso") and h > w:  # deja aire arriba para el chip del paso
+        pantalla_h = min(pantalla_h, round(h * 0.79) - 2 * bezel)
     pantalla_w = round(pantalla_h * CSS_W / CSS_H)
     tel_w, tel_h = pantalla_w + 2 * bezel, pantalla_h + 2 * bezel
     r_tel, r_pan = round(tel_w * 0.133), round(tel_w * 0.11)
     sx0, sy0 = (w - tel_w) // 2, (h - tel_h) // 2 - round(h * 0.01)
+    if params.get("paso") and h > w:
+        sy0 = (h - tel_h) // 2 + round(h * 0.03)
 
     base = _fondo(ctx, ctx.ruta(params.get("fondo")))
     sombra = Image.new("L", (w, h), 0)
@@ -151,6 +158,8 @@ def render(params, ctx, salida):
             )
             frame = base.copy()
             frame.paste(tel, (sx0, sy0), m_tel)
+            if params.get("paso") and h > w:
+                _paso.chip(frame, params["paso"], ctx, max(16, sy0 - 108 * w / 1080), min(1.0, t / 0.3))
             sc = 1.0 + 0.04 * ease(t / dur)  # respiración de cámara
             zw, zh = w / sc, h / sc
             ev.escribir(frame.resize((w, h), Image.BILINEAR, box=((w - zw) / 2, (h - zh) / 2, (w + zw) / 2, (h + zh) / 2)))

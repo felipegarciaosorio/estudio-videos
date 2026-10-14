@@ -1,0 +1,912 @@
+{
+ "modo": "escritorio",
+ "W": 1600,
+ "H": 900,
+ "DPR": 2,
+ "slug": "demo-b132e03a",
+ "capturas": [
+  {
+   "img": "000-inicio.png",
+   "nombre": "inicio",
+   "foco": {
+    "x": 288,
+    "y": 158.375,
+    "w": 1284,
+    "h": 571.984375
+   }
+  },
+  {
+   "img": "001-identidad.png",
+   "nombre": "identidad",
+   "toque": {
+    "x": 130,
+    "y": 155.578125
+   }
+  },
+  {
+   "img": "002-logo-antes.png",
+   "nombre": "logo-antes",
+   "foco": {
+    "x": 313,
+    "y": 563.796875,
+    "w": 850,
+    "h": 72
+   },
+   "toque": {
+    "x": 738,
+    "y": 599.796875
+   }
+  },
+  {
+   "img": "003-logo-despues.png",
+   "nombre": "logo-despues",
+   "foco": {
+    "x": 313,
+    "y": 563.796875,
+    "w": 850,
+    "h": 72
+   }
+  },
+  {
+   "img": "004-nombre-00.png",
+   "nombre": "nombre-00",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "toque": {
+    "x": 522,
+    "y": 450.03125
+   }
+  },
+  {
+   "img": "005-nombre-01.png",
+   "nombre": "nombre-01",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "006-nombre-02.png",
+   "nombre": "nombre-02",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "007-nombre-03.png",
+   "nombre": "nombre-03",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "008-nombre-04.png",
+   "nombre": "nombre-04",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "009-nombre-05.png",
+   "nombre": "nombre-05",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "010-nombre-06.png",
+   "nombre": "nombre-06",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "011-nombre-07.png",
+   "nombre": "nombre-07",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "012-nombre-08.png",
+   "nombre": "nombre-08",
+   "foco": {
+    "x": 313,
+    "y": 423.28125,
+    "w": 418,
+    "h": 53.5
+   },
+   "tipeo": true
+  },
+  {
+   "img": "013-frase-00.png",
+   "nombre": "frase-00",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "toque": {
+    "x": 954,
+    "y": 450.1875
+   }
+  },
+  {
+   "img": "014-frase-01.png",
+   "nombre": "frase-01",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "015-frase-02.png",
+   "nombre": "frase-02",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "016-frase-03.png",
+   "nombre": "frase-03",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "017-frase-04.png",
+   "nombre": "frase-04",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "018-frase-05.png",
+   "nombre": "frase-05",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "019-frase-06.png",
+   "nombre": "frase-06",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "020-frase-07.png",
+   "nombre": "frase-07",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "021-frase-08.png",
+   "nombre": "frase-08",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "022-frase-09.png",
+   "nombre": "frase-09",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "023-frase-10.png",
+   "nombre": "frase-10",
+   "foco": {
+    "x": 745,
+    "y": 429.390625,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "024-bio-00.png",
+   "nombre": "bio-00",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "toque": {
+    "x": 738,
+    "y": 450.375
+   }
+  },
+  {
+   "img": "025-bio-01.png",
+   "nombre": "bio-01",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "tipeo": true
+  },
+  {
+   "img": "026-bio-02.png",
+   "nombre": "bio-02",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "tipeo": true
+  },
+  {
+   "img": "027-bio-03.png",
+   "nombre": "bio-03",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "tipeo": true
+  },
+  {
+   "img": "028-bio-04.png",
+   "nombre": "bio-04",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "tipeo": true
+  },
+  {
+   "img": "029-bio-05.png",
+   "nombre": "bio-05",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "tipeo": true
+  },
+  {
+   "img": "030-bio-06.png",
+   "nombre": "bio-06",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "tipeo": true
+  },
+  {
+   "img": "031-bio-07.png",
+   "nombre": "bio-07",
+   "foco": {
+    "x": 313,
+    "y": 402.375,
+    "w": 850,
+    "h": 96
+   },
+   "tipeo": true
+  },
+  {
+   "img": "032-whatsapp-00.png",
+   "nombre": "whatsapp-00",
+   "foco": {
+    "x": 313,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "toque": {
+    "x": 522,
+    "y": 449.59375
+   }
+  },
+  {
+   "img": "033-whatsapp-01.png",
+   "nombre": "whatsapp-01",
+   "foco": {
+    "x": 313,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "034-whatsapp-02.png",
+   "nombre": "whatsapp-02",
+   "foco": {
+    "x": 313,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "035-whatsapp-03.png",
+   "nombre": "whatsapp-03",
+   "foco": {
+    "x": 313,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "036-whatsapp-04.png",
+   "nombre": "whatsapp-04",
+   "foco": {
+    "x": 313,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "037-whatsapp-05.png",
+   "nombre": "whatsapp-05",
+   "foco": {
+    "x": 313,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "038-whatsapp-06.png",
+   "nombre": "whatsapp-06",
+   "foco": {
+    "x": 313,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "039-mensaje-00.png",
+   "nombre": "mensaje-00",
+   "foco": {
+    "x": 745,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "toque": {
+    "x": 954,
+    "y": 449.59375
+   }
+  },
+  {
+   "img": "040-mensaje-01.png",
+   "nombre": "mensaje-01",
+   "foco": {
+    "x": 745,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "041-mensaje-02.png",
+   "nombre": "mensaje-02",
+   "foco": {
+    "x": 745,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "042-mensaje-03.png",
+   "nombre": "mensaje-03",
+   "foco": {
+    "x": 745,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "043-mensaje-04.png",
+   "nombre": "mensaje-04",
+   "foco": {
+    "x": 745,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "044-mensaje-05.png",
+   "nombre": "mensaje-05",
+   "foco": {
+    "x": 745,
+    "y": 428.796875,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "045-instagram-00.png",
+   "nombre": "instagram-00",
+   "foco": {
+    "x": 313,
+    "y": 428.78125,
+    "w": 418,
+    "h": 41.59375
+   },
+   "toque": {
+    "x": 522,
+    "y": 449.578125
+   }
+  },
+  {
+   "img": "046-instagram-01.png",
+   "nombre": "instagram-01",
+   "foco": {
+    "x": 313,
+    "y": 428.78125,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "047-instagram-02.png",
+   "nombre": "instagram-02",
+   "foco": {
+    "x": 313,
+    "y": 428.78125,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "048-instagram-03.png",
+   "nombre": "instagram-03",
+   "foco": {
+    "x": 313,
+    "y": 428.78125,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "049-instagram-04.png",
+   "nombre": "instagram-04",
+   "foco": {
+    "x": 313,
+    "y": 428.78125,
+    "w": 418,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "050-guardar-identidad-antes.png",
+   "nombre": "guardar-identidad-antes",
+   "toque": {
+    "x": 360.4375,
+    "y": 780.125
+   },
+   "foco": {
+    "x": 288,
+    "y": 760.125,
+    "w": 144.875,
+    "h": 40
+   }
+  },
+  {
+   "img": "051-guardado-identidad.png",
+   "nombre": "guardado-identidad",
+   "toque": {
+    "x": 360.4375,
+    "y": 780.125
+   }
+  },
+  {
+   "img": "052-servicios.png",
+   "nombre": "servicios",
+   "toque": {
+    "x": 130,
+    "y": 199.578125
+   }
+  },
+  {
+   "img": "053-tipo-antes.png",
+   "nombre": "tipo-antes",
+   "toque": {
+    "x": 513.5234375,
+    "y": 234.015625
+   },
+   "foco": {
+    "x": 313,
+    "y": 214.015625,
+    "w": 401.046875,
+    "h": 40
+   }
+  },
+  {
+   "img": "054-tipo-menu.png",
+   "nombre": "tipo-menu",
+   "foco": {
+    "x": 313,
+    "y": 214.015625,
+    "w": 401.046875,
+    "h": 40
+   },
+   "toque": {
+    "x": 513.5234375,
+    "y": 234.015625
+   }
+  },
+  {
+   "img": "055-tipo-despues.png",
+   "nombre": "tipo-despues",
+   "foco": {
+    "x": 313,
+    "y": 214.015625,
+    "w": 401.046875,
+    "h": 40
+   },
+   "toque": {
+    "x": 513.5234375,
+    "y": 393.015625
+   }
+  },
+  {
+   "img": "056-categoria-antes.png",
+   "nombre": "categoria-antes",
+   "toque": {
+    "x": 527.671875,
+    "y": 566.203125
+   },
+   "foco": {
+    "x": 480.890625,
+    "y": 550.203125,
+    "w": 93.5625,
+    "h": 32
+   }
+  },
+  {
+   "img": "057-categoria.png",
+   "nombre": "categoria",
+   "toque": {
+    "x": 527.671875,
+    "y": 566.203125
+   }
+  },
+  {
+   "img": "058-servicio1-nombre-00.png",
+   "nombre": "servicio1-nombre-00",
+   "foco": {
+    "x": 326,
+    "y": 309.609375,
+    "w": 462.984375,
+    "h": 41.59375
+   },
+   "toque": {
+    "x": 557.4921875,
+    "y": 330.40625
+   }
+  },
+  {
+   "img": "059-servicio1-nombre-01.png",
+   "nombre": "servicio1-nombre-01",
+   "foco": {
+    "x": 326,
+    "y": 309.609375,
+    "w": 462.984375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "060-servicio1-nombre-02.png",
+   "nombre": "servicio1-nombre-02",
+   "foco": {
+    "x": 326,
+    "y": 309.609375,
+    "w": 462.984375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "061-servicio1-nombre-03.png",
+   "nombre": "servicio1-nombre-03",
+   "foco": {
+    "x": 326,
+    "y": 309.609375,
+    "w": 462.984375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "062-servicio1-nombre-04.png",
+   "nombre": "servicio1-nombre-04",
+   "foco": {
+    "x": 326,
+    "y": 309.609375,
+    "w": 462.984375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "063-servicio1-nombre-05.png",
+   "nombre": "servicio1-nombre-05",
+   "foco": {
+    "x": 326,
+    "y": 309.609375,
+    "w": 462.984375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "064-servicio1-precio-00.png",
+   "nombre": "servicio1-precio-00",
+   "foco": {
+    "x": 796.984375,
+    "y": 309.609375,
+    "w": 244.484375,
+    "h": 41.59375
+   },
+   "toque": {
+    "x": 919.2265625,
+    "y": 330.40625
+   }
+  },
+  {
+   "img": "065-servicio1-precio-01.png",
+   "nombre": "servicio1-precio-01",
+   "foco": {
+    "x": 796.984375,
+    "y": 309.609375,
+    "w": 244.484375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "066-servicio1-precio-02.png",
+   "nombre": "servicio1-precio-02",
+   "foco": {
+    "x": 796.984375,
+    "y": 309.609375,
+    "w": 244.484375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "067-servicio1-precio-03.png",
+   "nombre": "servicio1-precio-03",
+   "foco": {
+    "x": 796.984375,
+    "y": 309.609375,
+    "w": 244.484375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "068-servicio1-precio-04.png",
+   "nombre": "servicio1-precio-04",
+   "foco": {
+    "x": 796.984375,
+    "y": 309.609375,
+    "w": 244.484375,
+    "h": 41.59375
+   },
+   "tipeo": true
+  },
+  {
+   "img": "069-agregar-antes.png",
+   "nombre": "agregar-antes",
+   "toque": {
+    "x": 1099.734375,
+    "y": 448.40625
+   },
+   "foco": {
+    "x": 1049.46875,
+    "y": 427.609375,
+    "w": 100.53125,
+    "h": 41.59375
+   }
+  },
+  {
+   "img": "070-servicio1-agregado.png",
+   "nombre": "servicio1-agregado",
+   "toque": {
+    "x": 1099.734375,
+    "y": 448.40625
+   }
+  },
+  {
+   "img": "071-servicios-lista.png",
+   "nombre": "servicios-lista"
+  },
+  {
+   "img": "072-guardar-servicios-antes.png",
+   "nombre": "guardar-servicios-antes",
+   "toque": {
+    "x": 360.4375,
+    "y": 779.78125
+   },
+   "foco": {
+    "x": 288,
+    "y": 759.78125,
+    "w": 144.875,
+    "h": 40
+   }
+  },
+  {
+   "img": "073-guardado-servicios.png",
+   "nombre": "guardado-servicios",
+   "toque": {
+    "x": 360.4375,
+    "y": 779.78125
+   }
+  },
+  {
+   "img": "074-fotos.png",
+   "nombre": "fotos",
+   "toque": {
+    "x": 130,
+    "y": 243.578125
+   }
+  },
+  {
+   "img": "075-fotos-portada.png",
+   "nombre": "fotos-portada"
+  },
+  {
+   "img": "076-fotos-galeria.png",
+   "nombre": "fotos-galeria"
+  },
+  {
+   "img": "077-horarios.png",
+   "nombre": "horarios",
+   "toque": {
+    "x": 130,
+    "y": 287.578125
+   }
+  },
+  {
+   "img": "078-publicar-antes.png",
+   "nombre": "publicar-antes",
+   "toque": {
+    "x": 1432.578125,
+    "y": 54.890625
+   },
+   "foco": {
+    "x": 1388.859375,
+    "y": 34.890625,
+    "w": 87.4375,
+    "h": 40
+   }
+  },
+  {
+   "img": "079-publicado.png",
+   "nombre": "publicado",
+   "toque": {
+    "x": 1432.578125,
+    "y": 54.890625
+   }
+  },
+  {
+   "img": "080-lista-completa.png",
+   "nombre": "lista-completa",
+   "toque": {
+    "x": 130,
+    "y": 111.578125
+   }
+  },
+  {
+   "img": "081-ayuda.png",
+   "nombre": "ayuda",
+   "foco": {
+    "x": 1484.296875,
+    "y": 38.890625,
+    "w": 87.703125,
+    "h": 32
+   },
+   "toque": {
+    "x": 1528.1484375,
+    "y": 54.890625
+   }
+  }
+ ]
+}

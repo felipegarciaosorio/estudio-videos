@@ -1,0 +1,734 @@
+{
+ "nombre": "Tutorial: completa tu identidad digital (9:16)",
+ "marca": "aurela",
+ "formato": "9:16",
+ "guion": {
+  "texto": "Tu identidad digital, lista en cinco pasos. Te muestro el camino. Entra a tu tarjeta en aurelasoluciones.com. Arriba verás la lista de lo que te falta. Paso uno: quién eres. En Identidad sube tu logo, escribe el nombre de tu negocio, a qué te dedicas y una presentación corta. Paso dos: tu contacto. Pon tu número de WhatsApp, el mensaje con el que te van a escribir y tus redes. Luego guarda los cambios. Paso tres: tus servicios. Elige tu tipo de negocio, crea una categoría y agrega cada servicio con su precio. Paso cuatro: tus fotos. Sube una portada y las fotos de tu negocio. Si quieres, suma también tus horarios, la ubicación, testimonios y preguntas frecuentes. Paso cinco: publica. Mientras no publiques, solo tú ves los cambios. Y listo: tu tarjeta está completa. ¿Dudas? El botón Ayuda te acompaña en cada sección. Crea tu identidad digital con Aurela.",
+  "say_as": {
+   "aurelasoluciones.com": "aurela soluciones punto com"
+  }
+ },
+ "voz": {
+  "archivo": "../20261012-tutorial-identidad-16x9/audio/borrador.mp3"
+ },
+ "escenas": [
+  {
+   "tipo": "texto",
+   "hasta": "@Entra a tu tarjeta",
+   "params": {
+    "lineas": [
+     "TU IDENTIDAD",
+     "DIGITAL",
+     "EN 5 PASOS"
+    ],
+    "resaltar": [
+     "5 PASOS"
+    ],
+    "fondo": "marca:fotos/tarjeta-mesa.png"
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Paso uno",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/000-inicio.png"
+     }
+    ],
+    "toques": [],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@Arriba verás-0.45",
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@Arriba verás",
+      "s": 1.0,
+      "cx": 195,
+      "cy": 892
+     }
+    ],
+    "paso": {
+     "n": 0,
+     "titulo": "Completa tu tarjeta",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ],
+     "etiqueta": "EMPIEZA AQUÍ",
+     "actual": 0
+    }
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Paso dos",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/000-inicio.png"
+     },
+     {
+      "t": 0.6,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/001-identidad.png"
+     },
+     {
+      "t": "@sube tu logo-0.3",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/002-logo-antes.png"
+     },
+     {
+      "t": "@sube tu logo+0.6",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/003-logo-despues.png"
+     },
+     {
+      "t": "@escribe el nombre",
+      "hasta": "@a qué te dedicas",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/004-nombre-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/005-nombre-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/006-nombre-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/007-nombre-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/008-nombre-04.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/009-nombre-05.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/010-nombre-06.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/011-nombre-07.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/012-nombre-08.png"
+      ]
+     },
+     {
+      "t": "@a qué te dedicas",
+      "hasta": "@y una presentación",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/013-frase-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/014-frase-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/015-frase-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/016-frase-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/017-frase-04.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/018-frase-05.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/019-frase-06.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/020-frase-07.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/021-frase-08.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/022-frase-09.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/023-frase-10.png"
+      ]
+     },
+     {
+      "t": "@y una presentación",
+      "hasta": "fin",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/024-bio-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/025-bio-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/026-bio-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/027-bio-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/028-bio-04.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/029-bio-05.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/030-bio-06.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/031-bio-07.png"
+      ]
+     }
+    ],
+    "toques": [
+     {
+      "t": 0.35,
+      "x": 282,
+      "y": 221
+     },
+     {
+      "t": "@sube tu logo+0.3",
+      "x": 195,
+      "y": 2462
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@sube tu logo-0.75",
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@sube tu logo-0.3",
+      "s": 1.25,
+      "cx": 195,
+      "cy": 2462
+     },
+     {
+      "t": "@escribe el nombre-0.45",
+      "s": 1.25,
+      "cx": 195,
+      "cy": 2462
+     },
+     {
+      "t": "@escribe el nombre",
+      "s": 1.25,
+      "cx": 116,
+      "cy": 422
+     },
+     {
+      "t": "@a qué te dedicas-0.45",
+      "s": 1.25,
+      "cx": 116,
+      "cy": 422
+     },
+     {
+      "t": "@a qué te dedicas",
+      "s": 1.25,
+      "cx": 274,
+      "cy": 422
+     },
+     {
+      "t": "@y una presentación-0.45",
+      "s": 1.25,
+      "cx": 274,
+      "cy": 422
+     },
+     {
+      "t": "@y una presentación",
+      "s": 1.25,
+      "cx": 195,
+      "cy": 422
+     }
+    ],
+    "paso": {
+     "n": 1,
+     "titulo": "Quién eres",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Paso tres",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/032-whatsapp-00.png"
+     },
+     {
+      "t": "@Pon tu número",
+      "hasta": "@el mensaje con",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/032-whatsapp-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/033-whatsapp-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/034-whatsapp-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/035-whatsapp-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/036-whatsapp-04.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/037-whatsapp-05.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/038-whatsapp-06.png"
+      ]
+     },
+     {
+      "t": "@el mensaje con",
+      "hasta": "@y tus redes",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/039-mensaje-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/040-mensaje-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/041-mensaje-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/042-mensaje-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/043-mensaje-04.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/044-mensaje-05.png"
+      ]
+     },
+     {
+      "t": "@y tus redes",
+      "hasta": "@Luego guarda",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/045-instagram-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/046-instagram-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/047-instagram-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/048-instagram-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/049-instagram-04.png"
+      ]
+     },
+     {
+      "t": "@Luego guarda",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/050-guardar-identidad-antes.png"
+     },
+     {
+      "t": "@guarda los cambios+0.25",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/051-guardado-identidad.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": "@guarda los cambios",
+      "x": 92,
+      "y": 770
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": 0.0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": 0.01,
+      "s": 1.25,
+      "cx": 116,
+      "cy": 821
+     },
+     {
+      "t": "@el mensaje con-0.45",
+      "s": 1.25,
+      "cx": 116,
+      "cy": 821
+     },
+     {
+      "t": "@el mensaje con",
+      "s": 1.25,
+      "cx": 274,
+      "cy": 832
+     },
+     {
+      "t": "@y tus redes-0.45",
+      "s": 1.25,
+      "cx": 274,
+      "cy": 832
+     },
+     {
+      "t": "@y tus redes",
+      "s": 1.25,
+      "cx": 116,
+      "cy": 436
+     },
+     {
+      "t": "@Luego guarda-0.45",
+      "s": 1.25,
+      "cx": 116,
+      "cy": 436
+     },
+     {
+      "t": "@Luego guarda",
+      "s": 1.0,
+      "cx": 92,
+      "cy": 770
+     }
+    ],
+    "paso": {
+     "n": 2,
+     "titulo": "Tu contacto",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Paso cuatro",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/051-guardado-identidad.png"
+     },
+     {
+      "t": 0.6,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/052-servicios.png"
+     },
+     {
+      "t": "@Elige tu tipo-0.4",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/053-tipo-antes.png"
+     },
+     {
+      "t": "@Elige tu tipo+0.25",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/054-tipo-menu.png"
+     },
+     {
+      "t": "@Elige tu tipo+1.25",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/055-tipo-despues.png"
+     },
+     {
+      "t": "@crea una categoría-0.4",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/056-categoria-antes.png"
+     },
+     {
+      "t": "@crea una categoría+0.25",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/057-categoria.png"
+     },
+     {
+      "t": "@agrega cada servicio",
+      "hasta": "@con su precio",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/058-servicio1-nombre-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/059-servicio1-nombre-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/060-servicio1-nombre-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/061-servicio1-nombre-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/062-servicio1-nombre-04.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/063-servicio1-nombre-05.png"
+      ]
+     },
+     {
+      "t": "@con su precio",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/064-servicio1-precio-00.png"
+     },
+     {
+      "t": "@con su precio",
+      "hasta": "@con su precio+0.8",
+      "imgs": [
+       "../20261012-tutorial-identidad-16x9/capturas/movil/064-servicio1-precio-00.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/065-servicio1-precio-01.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/066-servicio1-precio-02.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/067-servicio1-precio-03.png",
+       "../20261012-tutorial-identidad-16x9/capturas/movil/068-servicio1-precio-04.png"
+      ]
+     },
+     {
+      "t": "@con su precio+0.8",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/069-agregar-antes.png"
+     },
+     {
+      "t": "@con su precio+1.15",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/070-servicio1-agregado.png"
+     },
+     {
+      "t": "@con su precio+1.7",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/071-servicios-lista.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": 0.35,
+      "x": 385,
+      "y": -884
+     },
+     {
+      "t": "@Elige tu tipo",
+      "x": 195,
+      "y": 409
+     },
+     {
+      "t": "@Elige tu tipo+1.0",
+      "x": 195,
+      "y": 570
+     },
+     {
+      "t": "@crea una categoría",
+      "x": 148,
+      "y": 580
+     },
+     {
+      "t": "@con su precio+0.9",
+      "x": 282,
+      "y": 612
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@Elige tu tipo-0.65",
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@Elige tu tipo-0.2",
+      "s": 1.0,
+      "cx": 195,
+      "cy": 409
+     },
+     {
+      "t": "@agrega cada servicio-0.45",
+      "s": 1.0,
+      "cx": 195,
+      "cy": 409
+     },
+     {
+      "t": "@agrega cada servicio",
+      "s": 1.25,
+      "cx": 106,
+      "cy": 612
+     },
+     {
+      "t": "@con su precio+1.15",
+      "s": 1.25,
+      "cx": 106,
+      "cy": 612
+     },
+     {
+      "t": "@con su precio+1.6",
+      "s": 1.0,
+      "cx": 195,
+      "cy": 422
+     }
+    ],
+    "paso": {
+     "n": 3,
+     "titulo": "Tus servicios",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Paso cinco",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/073-guardado-servicios.png"
+     },
+     {
+      "t": 0.6,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/074-fotos.png"
+     },
+     {
+      "t": "@Sube una portada+0.4",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/075-fotos-portada.png"
+     },
+     {
+      "t": "@las fotos de tu negocio+0.4",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/076-fotos-galeria.png"
+     },
+     {
+      "t": "@suma también",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/077-horarios.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": 0.35,
+      "x": 473,
+      "y": 207
+     },
+     {
+      "t": "@suma también-0.3",
+      "x": 584,
+      "y": 221
+     }
+    ],
+    "paso": {
+     "n": 4,
+     "titulo": "Tus fotos",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Tu tarjeta está",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/077-horarios.png"
+     },
+     {
+      "t": "@publica-0.3",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/078-publicar-antes.png"
+     },
+     {
+      "t": "@publica+0.55",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/079-publicado.png"
+     },
+     {
+      "t": "@Y listo",
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/080-lista-completa.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": "@publica+0.3",
+      "x": 217,
+      "y": 172
+     },
+     {
+      "t": "@Y listo-0.3",
+      "x": 123,
+      "y": 261
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@publica-0.45",
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": "@publica",
+      "s": 1.2,
+      "cx": 217,
+      "cy": 172
+     },
+     {
+      "t": "@Mientras no publiques+0.35",
+      "s": 1.2,
+      "cx": 217,
+      "cy": 172
+     },
+     {
+      "t": "@Mientras no publiques+0.8",
+      "s": 1.0,
+      "cx": 195,
+      "cy": 422
+     }
+    ],
+    "paso": {
+     "n": 5,
+     "titulo": "Publica",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Dudas",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/082-publico-arriba.png"
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195,
+      "cy": 422
+     },
+     {
+      "t": "fin",
+      "s": 1.08,
+      "cx": 195,
+      "cy": 360
+     }
+    ],
+    "fondo": "marca:fotos/tarjeta-mesa.png"
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Crea tu identidad",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "../20261012-tutorial-identidad-16x9/capturas/movil/081-ayuda.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": "@El botón Ayuda+0.2",
+      "x": 64,
+      "y": 218
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": 0.0,
+      "s": 1.0,
+      "cx": 195.0,
+      "cy": 422.0
+     },
+     {
+      "t": 0.3,
+      "s": 1.3,
+      "cx": 64,
+      "cy": 218
+     }
+    ]
+   }
+  },
+  {
+   "tipo": "cierre",
+   "hasta": "fin_voz",
+   "extra": 1.2,
+   "params": {
+    "subtitulo": "IDENTIDAD DIGITAL"
+   }
+  }
+ ],
+ "capas": {
+  "subtitulos": true,
+  "logo": true
+ },
+ "audio": {
+  "musica": "sintetica",
+  "volumen_musica": 0.6,
+  "sfx_cortes": true
+ },
+ "ia": {
+  "motor": "higgsfield",
+  "via": "claude",
+  "voz": {
+   "voice_id": "f1e8226e-2248-4d5f-b43c-0a79e9949dbf",
+   "nombre": "Andre"
+  }
+ }
+}

@@ -8,7 +8,8 @@ from .base import FPS, EscritorVideo, ease_out, fuente
 
 
 def _display(tok):
-    return re.sub(r"(?<=\D)[.,:]|[,:;]$|\.$", "", tok).upper()
+    # el punto dentro de un dominio ("aurelasoluciones.com") se queda
+    return re.sub(r"(?<=\D)[.,:](?![^\W\d_])|[,:;]$|\.$", "", tok).upper()
 
 
 def _chunks(palabras, max_palabras=3):
@@ -32,7 +33,7 @@ class Capa:
         self.cfg = cfg
         self.palabras = palabras
         self.chunks = _chunks(palabras) if cfg.get("subtitulos", True) else []
-        self.f_sub = fuente(marca.fuente_subtitulos, 112 * self.s)
+        self.f_sub = fuente(marca.fuente_subtitulos, 112 * self.s * cfg.get("escala_subtitulos", 1.0))
         self.y_sub = h * cfg.get("altura_subtitulos", 0.745 if h > w else 0.78)
         self.resalte = marca.color("primario")
         self.logo_capa = self._logo() if cfg.get("logo", True) else None
@@ -111,7 +112,7 @@ class Capa:
         f = self.f_sub
         total = sum(anchos) + gap * (len(actual) - 1)
         if total > self.w * 0.92:
-            f = fuente(self.marca.fuente_subtitulos, 112 * self.s * self.w * 0.92 / total)
+            f = fuente(self.marca.fuente_subtitulos, self.f_sub.size * self.w * 0.92 / total)
             cajas = [d.textbbox((0, 0), tx, font=f) for tx in textos]
             anchos = [b[2] - b[0] for b in cajas]
             total = sum(anchos) + gap * (len(actual) - 1)

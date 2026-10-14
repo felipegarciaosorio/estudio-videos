@@ -1,0 +1,771 @@
+{
+ "nombre": "Tutorial: completa tu identidad digital (16:9)",
+ "marca": "aurela",
+ "formato": "16:9",
+ "guion": {
+  "texto": "Tu identidad digital, lista en cinco pasos. Te muestro el camino. Entra a tu tarjeta en aurelasoluciones.com. Arriba verás la lista de lo que te falta. Paso uno: quién eres. En Identidad sube tu logo, escribe el nombre de tu negocio, a qué te dedicas y una presentación corta. Paso dos: tu contacto. Pon tu número de WhatsApp, el mensaje con el que te van a escribir y tus redes. Luego guarda los cambios. Paso tres: tus servicios. Elige tu tipo de negocio, crea una categoría y agrega cada servicio con su precio. Paso cuatro: tus fotos. Sube una portada y las fotos de tu negocio. Si quieres, suma también tus horarios, la ubicación, testimonios y preguntas frecuentes. Paso cinco: publica. Mientras no publiques, solo tú ves los cambios. Y listo: tu tarjeta está completa. ¿Dudas? El botón Ayuda te acompaña en cada sección. Crea tu identidad digital con Aurela.",
+  "say_as": {
+   "aurelasoluciones.com": "aurela soluciones punto com"
+  }
+ },
+ "voz": {
+  "archivo": "audio/borrador.mp3"
+ },
+ "escenas": [
+  {
+   "tipo": "texto",
+   "hasta": "@Entra a tu tarjeta",
+   "params": {
+    "lineas": [
+     "TU IDENTIDAD",
+     "DIGITAL",
+     "EN 5 PASOS"
+    ],
+    "resaltar": [
+     "5 PASOS"
+    ],
+    "fondo": "marca:fotos/tarjeta-mesa.png"
+   }
+  },
+  {
+   "tipo": "navegador",
+   "hasta": "@Paso uno",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/escritorio/000-inicio.png"
+     }
+    ],
+    "toques": [],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@Arriba verás-0.45",
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@Arriba verás",
+      "s": 1.25,
+      "cx": 930,
+      "cy": 444
+     }
+    ],
+    "css": [
+     1600,
+     900
+    ],
+    "url": "aurelasoluciones.com/nfc",
+    "paso": {
+     "n": 0,
+     "titulo": "Completa tu tarjeta",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ],
+     "etiqueta": "EMPIEZA AQUÍ",
+     "actual": 0
+    }
+   }
+  },
+  {
+   "tipo": "navegador",
+   "hasta": "@Paso dos",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/escritorio/000-inicio.png"
+     },
+     {
+      "t": 0.6,
+      "img": "capturas/escritorio/001-identidad.png"
+     },
+     {
+      "t": "@sube tu logo-0.3",
+      "img": "capturas/escritorio/002-logo-antes.png"
+     },
+     {
+      "t": "@sube tu logo+0.6",
+      "img": "capturas/escritorio/003-logo-despues.png"
+     },
+     {
+      "t": "@escribe el nombre",
+      "hasta": "@a qué te dedicas",
+      "imgs": [
+       "capturas/escritorio/004-nombre-00.png",
+       "capturas/escritorio/005-nombre-01.png",
+       "capturas/escritorio/006-nombre-02.png",
+       "capturas/escritorio/007-nombre-03.png",
+       "capturas/escritorio/008-nombre-04.png",
+       "capturas/escritorio/009-nombre-05.png",
+       "capturas/escritorio/010-nombre-06.png",
+       "capturas/escritorio/011-nombre-07.png",
+       "capturas/escritorio/012-nombre-08.png"
+      ]
+     },
+     {
+      "t": "@a qué te dedicas",
+      "hasta": "@y una presentación",
+      "imgs": [
+       "capturas/escritorio/013-frase-00.png",
+       "capturas/escritorio/014-frase-01.png",
+       "capturas/escritorio/015-frase-02.png",
+       "capturas/escritorio/016-frase-03.png",
+       "capturas/escritorio/017-frase-04.png",
+       "capturas/escritorio/018-frase-05.png",
+       "capturas/escritorio/019-frase-06.png",
+       "capturas/escritorio/020-frase-07.png",
+       "capturas/escritorio/021-frase-08.png",
+       "capturas/escritorio/022-frase-09.png",
+       "capturas/escritorio/023-frase-10.png"
+      ]
+     },
+     {
+      "t": "@y una presentación",
+      "hasta": "fin",
+      "imgs": [
+       "capturas/escritorio/024-bio-00.png",
+       "capturas/escritorio/025-bio-01.png",
+       "capturas/escritorio/026-bio-02.png",
+       "capturas/escritorio/027-bio-03.png",
+       "capturas/escritorio/028-bio-04.png",
+       "capturas/escritorio/029-bio-05.png",
+       "capturas/escritorio/030-bio-06.png",
+       "capturas/escritorio/031-bio-07.png"
+      ]
+     }
+    ],
+    "toques": [
+     {
+      "t": 0.35,
+      "x": 130,
+      "y": 156
+     },
+     {
+      "t": "@sube tu logo+0.3",
+      "x": 738,
+      "y": 600
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@sube tu logo-0.75",
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@sube tu logo-0.3",
+      "s": 1.7,
+      "cx": 738,
+      "cy": 600
+     },
+     {
+      "t": "@escribe el nombre-0.45",
+      "s": 1.7,
+      "cx": 738,
+      "cy": 600
+     },
+     {
+      "t": "@escribe el nombre",
+      "s": 1.7,
+      "cx": 522,
+      "cy": 450
+     },
+     {
+      "t": "@a qué te dedicas-0.45",
+      "s": 1.7,
+      "cx": 522,
+      "cy": 450
+     },
+     {
+      "t": "@a qué te dedicas",
+      "s": 1.7,
+      "cx": 954,
+      "cy": 450
+     },
+     {
+      "t": "@y una presentación-0.45",
+      "s": 1.7,
+      "cx": 954,
+      "cy": 450
+     },
+     {
+      "t": "@y una presentación",
+      "s": 1.7,
+      "cx": 738,
+      "cy": 450
+     }
+    ],
+    "css": [
+     1600,
+     900
+    ],
+    "url": "aurelasoluciones.com/nfc",
+    "paso": {
+     "n": 1,
+     "titulo": "Quién eres",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "navegador",
+   "hasta": "@Paso tres",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/escritorio/032-whatsapp-00.png"
+     },
+     {
+      "t": "@Pon tu número",
+      "hasta": "@el mensaje con",
+      "imgs": [
+       "capturas/escritorio/032-whatsapp-00.png",
+       "capturas/escritorio/033-whatsapp-01.png",
+       "capturas/escritorio/034-whatsapp-02.png",
+       "capturas/escritorio/035-whatsapp-03.png",
+       "capturas/escritorio/036-whatsapp-04.png",
+       "capturas/escritorio/037-whatsapp-05.png",
+       "capturas/escritorio/038-whatsapp-06.png"
+      ]
+     },
+     {
+      "t": "@el mensaje con",
+      "hasta": "@y tus redes",
+      "imgs": [
+       "capturas/escritorio/039-mensaje-00.png",
+       "capturas/escritorio/040-mensaje-01.png",
+       "capturas/escritorio/041-mensaje-02.png",
+       "capturas/escritorio/042-mensaje-03.png",
+       "capturas/escritorio/043-mensaje-04.png",
+       "capturas/escritorio/044-mensaje-05.png"
+      ]
+     },
+     {
+      "t": "@y tus redes",
+      "hasta": "@Luego guarda",
+      "imgs": [
+       "capturas/escritorio/045-instagram-00.png",
+       "capturas/escritorio/046-instagram-01.png",
+       "capturas/escritorio/047-instagram-02.png",
+       "capturas/escritorio/048-instagram-03.png",
+       "capturas/escritorio/049-instagram-04.png"
+      ]
+     },
+     {
+      "t": "@Luego guarda",
+      "img": "capturas/escritorio/050-guardar-identidad-antes.png"
+     },
+     {
+      "t": "@guarda los cambios+0.25",
+      "img": "capturas/escritorio/051-guardado-identidad.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": "@guarda los cambios",
+      "x": 360,
+      "y": 780
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": 0.0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": 0.01,
+      "s": 1.7,
+      "cx": 522,
+      "cy": 450
+     },
+     {
+      "t": "@el mensaje con-0.45",
+      "s": 1.7,
+      "cx": 522,
+      "cy": 450
+     },
+     {
+      "t": "@el mensaje con",
+      "s": 1.7,
+      "cx": 954,
+      "cy": 450
+     },
+     {
+      "t": "@y tus redes-0.45",
+      "s": 1.7,
+      "cx": 954,
+      "cy": 450
+     },
+     {
+      "t": "@y tus redes",
+      "s": 1.7,
+      "cx": 522,
+      "cy": 450
+     },
+     {
+      "t": "@Luego guarda-0.45",
+      "s": 1.7,
+      "cx": 522,
+      "cy": 450
+     },
+     {
+      "t": "@Luego guarda",
+      "s": 1.35,
+      "cx": 360,
+      "cy": 780
+     }
+    ],
+    "css": [
+     1600,
+     900
+    ],
+    "url": "aurelasoluciones.com/nfc",
+    "paso": {
+     "n": 2,
+     "titulo": "Tu contacto",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "navegador",
+   "hasta": "@Paso cuatro",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/escritorio/051-guardado-identidad.png"
+     },
+     {
+      "t": 0.6,
+      "img": "capturas/escritorio/052-servicios.png"
+     },
+     {
+      "t": "@Elige tu tipo-0.4",
+      "img": "capturas/escritorio/053-tipo-antes.png"
+     },
+     {
+      "t": "@Elige tu tipo+0.25",
+      "img": "capturas/escritorio/054-tipo-menu.png"
+     },
+     {
+      "t": "@Elige tu tipo+1.25",
+      "img": "capturas/escritorio/055-tipo-despues.png"
+     },
+     {
+      "t": "@crea una categoría-0.4",
+      "img": "capturas/escritorio/056-categoria-antes.png"
+     },
+     {
+      "t": "@crea una categoría+0.25",
+      "img": "capturas/escritorio/057-categoria.png"
+     },
+     {
+      "t": "@agrega cada servicio",
+      "hasta": "@con su precio",
+      "imgs": [
+       "capturas/escritorio/058-servicio1-nombre-00.png",
+       "capturas/escritorio/059-servicio1-nombre-01.png",
+       "capturas/escritorio/060-servicio1-nombre-02.png",
+       "capturas/escritorio/061-servicio1-nombre-03.png",
+       "capturas/escritorio/062-servicio1-nombre-04.png",
+       "capturas/escritorio/063-servicio1-nombre-05.png"
+      ]
+     },
+     {
+      "t": "@con su precio",
+      "img": "capturas/escritorio/064-servicio1-precio-00.png"
+     },
+     {
+      "t": "@con su precio",
+      "hasta": "@con su precio+0.8",
+      "imgs": [
+       "capturas/escritorio/064-servicio1-precio-00.png",
+       "capturas/escritorio/065-servicio1-precio-01.png",
+       "capturas/escritorio/066-servicio1-precio-02.png",
+       "capturas/escritorio/067-servicio1-precio-03.png",
+       "capturas/escritorio/068-servicio1-precio-04.png"
+      ]
+     },
+     {
+      "t": "@con su precio+0.8",
+      "img": "capturas/escritorio/069-agregar-antes.png"
+     },
+     {
+      "t": "@con su precio+1.15",
+      "img": "capturas/escritorio/070-servicio1-agregado.png"
+     },
+     {
+      "t": "@con su precio+1.7",
+      "img": "capturas/escritorio/071-servicios-lista.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": 0.35,
+      "x": 130,
+      "y": 200
+     },
+     {
+      "t": "@Elige tu tipo",
+      "x": 514,
+      "y": 234
+     },
+     {
+      "t": "@Elige tu tipo+1.0",
+      "x": 514,
+      "y": 393
+     },
+     {
+      "t": "@crea una categoría",
+      "x": 528,
+      "y": 566
+     },
+     {
+      "t": "@con su precio+0.9",
+      "x": 1100,
+      "y": 448
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@Elige tu tipo-0.65",
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@Elige tu tipo-0.2",
+      "s": 1.45,
+      "cx": 514,
+      "cy": 234
+     },
+     {
+      "t": "@agrega cada servicio-0.45",
+      "s": 1.45,
+      "cx": 514,
+      "cy": 234
+     },
+     {
+      "t": "@agrega cada servicio",
+      "s": 1.7,
+      "cx": 557,
+      "cy": 330
+     },
+     {
+      "t": "@con su precio+1.15",
+      "s": 1.7,
+      "cx": 557,
+      "cy": 330
+     },
+     {
+      "t": "@con su precio+1.6",
+      "s": 1.0,
+      "cx": 800,
+      "cy": 450
+     }
+    ],
+    "css": [
+     1600,
+     900
+    ],
+    "url": "aurelasoluciones.com/nfc",
+    "paso": {
+     "n": 3,
+     "titulo": "Tus servicios",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "navegador",
+   "hasta": "@Paso cinco",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/escritorio/073-guardado-servicios.png"
+     },
+     {
+      "t": 0.6,
+      "img": "capturas/escritorio/074-fotos.png"
+     },
+     {
+      "t": "@Sube una portada+0.4",
+      "img": "capturas/escritorio/075-fotos-portada.png"
+     },
+     {
+      "t": "@las fotos de tu negocio+0.4",
+      "img": "capturas/escritorio/076-fotos-galeria.png"
+     },
+     {
+      "t": "@suma también",
+      "img": "capturas/escritorio/077-horarios.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": 0.35,
+      "x": 130,
+      "y": 244
+     },
+     {
+      "t": "@suma también-0.3",
+      "x": 130,
+      "y": 288
+     }
+    ],
+    "css": [
+     1600,
+     900
+    ],
+    "url": "aurelasoluciones.com/nfc",
+    "paso": {
+     "n": 4,
+     "titulo": "Tus fotos",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "navegador",
+   "hasta": "@Tu tarjeta está",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/escritorio/077-horarios.png"
+     },
+     {
+      "t": "@publica-0.3",
+      "img": "capturas/escritorio/078-publicar-antes.png"
+     },
+     {
+      "t": "@publica+0.55",
+      "img": "capturas/escritorio/079-publicado.png"
+     },
+     {
+      "t": "@Y listo",
+      "img": "capturas/escritorio/080-lista-completa.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": "@publica+0.3",
+      "x": 1433,
+      "y": 55
+     },
+     {
+      "t": "@Y listo-0.3",
+      "x": 130,
+      "y": 112
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@publica-0.45",
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": "@publica",
+      "s": 1.5,
+      "cx": 1433,
+      "cy": 55
+     },
+     {
+      "t": "@Mientras no publiques+0.35",
+      "s": 1.5,
+      "cx": 1433,
+      "cy": 55
+     },
+     {
+      "t": "@Mientras no publiques+0.8",
+      "s": 1.0,
+      "cx": 800,
+      "cy": 450
+     }
+    ],
+    "css": [
+     1600,
+     900
+    ],
+    "url": "aurelasoluciones.com/nfc",
+    "paso": {
+     "n": 5,
+     "titulo": "Publica",
+     "lista": [
+      "Quién eres",
+      "Tu contacto",
+      "Tus servicios",
+      "Tus fotos",
+      "Publica"
+     ]
+    }
+   }
+  },
+  {
+   "tipo": "telefono",
+   "hasta": "@Dudas",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/movil/082-publico-arriba.png"
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 195,
+      "cy": 422
+     },
+     {
+      "t": "fin",
+      "s": 1.08,
+      "cx": 195,
+      "cy": 360
+     }
+    ],
+    "fondo": "marca:fotos/tarjeta-mesa.png"
+   }
+  },
+  {
+   "tipo": "navegador",
+   "hasta": "@Crea tu identidad",
+   "params": {
+    "estados": [
+     {
+      "t": 0,
+      "img": "capturas/escritorio/081-ayuda.png"
+     }
+    ],
+    "toques": [
+     {
+      "t": "@El botón Ayuda+0.2",
+      "x": 1528,
+      "y": 55
+     }
+    ],
+    "zoom": [
+     {
+      "t": 0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": 0.0,
+      "s": 1.0,
+      "cx": 800.0,
+      "cy": 450.0
+     },
+     {
+      "t": 0.3,
+      "s": 1.9,
+      "cx": 1528,
+      "cy": 55
+     }
+    ],
+    "css": [
+     1600,
+     900
+    ],
+    "url": "aurelasoluciones.com/nfc"
+   }
+  },
+  {
+   "tipo": "cierre",
+   "hasta": "fin_voz",
+   "extra": 1.2,
+   "params": {
+    "subtitulo": "IDENTIDAD DIGITAL"
+   }
+  }
+ ],
+ "capas": {
+  "subtitulos": true,
+  "logo": true,
+  "altura_subtitulos": 0.885,
+  "escala_subtitulos": 0.8
+ },
+ "audio": {
+  "musica": "sintetica",
+  "volumen_musica": 0.6,
+  "sfx_cortes": true
+ },
+ "ia": {
+  "motor": "higgsfield",
+  "via": "claude",
+  "voz": {
+   "voice_id": "f1e8226e-2248-4d5f-b43c-0a79e9949dbf",
+   "nombre": "Andre"
+  }
+ }
+}

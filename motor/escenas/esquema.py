@@ -40,6 +40,9 @@ ESCENAS = {
         {"id": "fondo", "etiqueta": "Foto de fondo", "tipo": "foto"}]},
     "telefono": {"nombre": "Capturas propias en el celular", "campos": [
         {"id": "fondo", "etiqueta": "Foto de fondo", "tipo": "foto"}]},
+    "navegador": {"nombre": "Capturas de escritorio en una ventana de navegador", "campos": [
+        {"id": "url", "etiqueta": "Dirección que muestra la barra", "tipo": "texto"},
+        {"id": "fondo", "etiqueta": "Foto de fondo", "tipo": "foto"}]},
     "clip_ia": {"nombre": "Clip de video IA (Higgsfield)", "ia": True, "campos": [
         {"id": "prompt", "etiqueta": "Qué pasa en el clip (inglés: sujeto, acción, cámara, luz)", "tipo": "area"},
         {"id": "imagen", "etiqueta": "Foto de inicio (da fidelidad al producto)", "tipo": "foto"},

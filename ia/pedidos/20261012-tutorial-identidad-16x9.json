@@ -1,0 +1,33 @@
+{
+  "pid": "20261012-tutorial-identidad-16x9",
+  "nombre": "Tutorial: completa tu identidad digital (16:9)",
+  "marca": "aurela",
+  "via": "chatgpt",
+  "creado": "2026-10-12 08:49",
+  "proyecto": "/Users/pipe/Documents/Codex/estudio-videos/proyectos/20261012-tutorial-identidad-16x9",
+  "tareas": [
+    {
+      "id": "voz-822596dcb4",
+      "tipo": "voz",
+      "escena": null,
+      "nombre": "Voz Andre",
+      "modelo": "text2speech_v2",
+      "params": {
+        "variant": "elevenlabs",
+        "voice_type": "preset",
+        "voice_id": "f1e8226e-2248-4d5f-b43c-0a79e9949dbf"
+      },
+      "prompt": "Tu identidad digital, lista en cinco pasos. Te muestro el camino. Entra a tu tarjeta en aurela soluciones punto com. Arriba verás la lista de lo que te falta. Paso uno: quién eres. En Identidad sube tu logo, escribe el nombre de tu negocio, a qué te dedicas y una presentación corta. Paso dos: tu contacto. Pon tu número de WhatsApp, el mensaje con el que te van a escribir y tus redes. Luego guarda los cambios. Paso tres: tus servicios. Elige tu tipo de negocio, crea una categoría y agrega cada servicio con su precio. Paso cuatro: tus fotos. Sube una portada y las fotos de tu negocio. Si quieres, suma también tus horarios, la ubicación, testimonios y preguntas frecuentes. Paso cinco: publica. Mientras no publiques, solo tú ves los cambios. Y listo: tu tarjeta está completa. Por último, en Tarjetas físicas escribe el código de tu tarjeta. Así, con solo acercarla al celular, tus clientes ven tu perfil. ¿Dudas? El botón Ayuda te acompaña en cada sección. Crea tu identidad digital con Aurela.",
+      "referencias": [],
+      "destino": "ia/voz-822596dcb4.mp3",
+      "costo": 2.5,
+      "listo": false,
+      "estado": "listo",
+      "job_id": "2d31d3d0-411e-4621-92a7-a5ba37991992",
+      "actualizado": "2026-10-12 08:53:06",
+      "archivo": "ia/voz-822596dcb4.mp3",
+      "error": null
+    }
+  ],
+  "costo": 2.5
+}

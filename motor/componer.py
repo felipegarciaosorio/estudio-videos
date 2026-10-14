@@ -33,7 +33,7 @@ from .base import FFMPEG, FORMATOS, FPS, RAIZ, duracion, run
 from .escenas import Ctx, modulo, t_de
 from .marca import Marca
 
-SIN_LOGO = {"telefono", "captura", "cierre"}  # escenas donde el logo de arriba estorba
+SIN_LOGO = {"telefono", "captura", "cierre", "navegador"}  # escenas donde el logo de arriba estorba
 
 
 class Progreso:
