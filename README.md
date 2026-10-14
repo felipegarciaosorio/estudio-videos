@@ -20,10 +20,20 @@ Probado en un Mac M1 con 8 GB de RAM.
 |---|---|
 | Python 3.11 | Motor y panel (FastAPI) |
 | ffmpeg | Render y mezcla de audio |
-| Node 22 (`~/.nvm/versions/node/v22.12.0`) y Google Chrome | Capturas de páginas web |
+| Node 22 y Google Chrome | Capturas de páginas web |
 | Blender (`/Applications/Blender.app`) | Escenas 3D (opcional) |
 
 ## Instalación
+
+En un Mac nuevo, con [Homebrew](https://brew.sh):
+
+```bash
+brew install python@3.11 ffmpeg node@22
+```
+
+```bash
+git clone https://github.com/felipegarciaosorio/estudio-videos.git && cd estudio-videos
+```
 
 ```bash
 python3.11 -m venv .venv

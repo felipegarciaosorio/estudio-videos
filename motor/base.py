@@ -13,7 +13,8 @@ FORMATOS = {"9:16": (1080, 1920), "1:1": (1080, 1080), "16:9": (1920, 1080)}
 
 FFMPEG = shutil.which("ffmpeg") or "/opt/homebrew/bin/ffmpeg"
 FFPROBE = shutil.which("ffprobe") or "/opt/homebrew/bin/ffprobe"
-NODE = str(Path.home() / ".nvm/versions/node/v22.12.0/bin/node")
+_NODE_NVM = Path.home() / ".nvm/versions/node/v22.12.0/bin/node"
+NODE = str(_NODE_NVM) if _NODE_NVM.exists() else (shutil.which("node") or "node")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 BLENDER = "/Applications/Blender.app/Contents/MacOS/Blender"
 
